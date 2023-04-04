@@ -1,0 +1,102 @@
+
+ <header class="header">
+        <a href="#" class="logo">Meeting Schedular</a>
+        <nav class="nav-items">
+          <a href="/home">Logout</a>
+        </nav>
+</header>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Dashboard</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle"></a>
+                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Booked Meeting</span> </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Rooms</span>  </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="meetinginfo" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Booking Info</span></a>
+                    </li>
+              
+                <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align- ">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Meetin Scheduler</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Rooms</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Booked</span> 2</a>
+                            </li>
+                            <li>
+                                <a href="meetinginfo" class="nav-link px-0"> <span class="d-none d-sm-inline">Meeting Info</span> 3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">About</span> 4</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"></span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">user</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="login">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+            <div>
+                <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Cards</title>
+            </head>
+                <div class="card"  *ngFor="let rooms of roomDetails">
+                    <div class="card__component" >
+                      <h1 style="color: chartreuse;">{{rooms.room_desc}}</h1>
+                      <!-- <h1 style="color: chartreuse;">{{rooms.room_name}}</h1> -->
+                    </div>
+                    <div class="image">
+                        <img src="https://elevatedintegration.com/wp-content/uploads/2019/06/Commercial-Solutions_Boardrooms_conference-rooms.jpeg">
+                    </div>
+
+                    
+                    <div class="des">
+                        <button (click)="bookmeeting(rooms.id)">BookNow</button>
+                    </div>
+                </div>
+
+                  
+

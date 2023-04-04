@@ -1,0 +1,572 @@
+/* *{
+    margin: 0px;
+    padding: 0px;
+   }
+   body{
+    font-family: arial;
+   } */
+   .main{
+   
+    margin: 200%;
+   }
+   
+   .card{
+        width: 20%;
+        display: inline-block;
+        box-shadow: 2px 2px 20px black;
+        border-radius: 5px; 
+        margin: 2%;
+        
+       }
+   
+   .image img{
+     width: 100%;
+     border-top-right-radius: 5px;
+     border-top-left-radius: 5px;
+     max-height: 150px;
+
+     
+   
+    
+    }
+   
+   .title{
+    
+     text-align: center;
+     padding: 10px;
+     
+    }
+   
+   h1{
+     font-size: 20px;
+    }
+   
+   .des{
+     padding: 3px;
+     text-align: center;
+    
+     padding-top: 10px;
+           border-bottom-right-radius: 5px;
+     border-bottom-left-radius: 5px;
+   }
+   button{
+     margin-top: 40px;
+     margin-bottom: 10px;
+     background-color: white;
+     border: 1px solid black;
+     border-radius: 5px;
+     padding:10px;
+   }
+   button:hover{
+     background-color: black;
+     color: white;
+     transition: .5s;
+     cursor: pointer;
+   }
+   body {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  /* CSS for header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #302f49;
+  }
+  
+  .header .logo {
+    font-size: 30px;
+    font-family: -webkit-body;
+    color: #5edaf0;
+    text-decoration: solid;
+    margin-left: 30px;
+  }
+  
+  .nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #302f49;
+    margin-right: 20px;
+  }
+  
+  .nav-items a {
+    text-decoration: none;
+    color: #5edaf0;
+    padding: 35px 20px;
+  }
+  /* CSS for main section */
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 520px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://www.wework.com/ideas/wp-content/uploads/sites/4/2020/04/WeWork_MediumConferenceRoom-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .intro h1 {
+    font-family: sans-serif;
+    font-size: 60px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .intro p {
+    font-size: 20px;
+    color: #d1d1d1;
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+  
+  .intro button {
+    background-color: #5edaf0;
+    color: #022329;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+  }
+  
+  .achievements {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 80px;
+  }
+  
+  .achievements .work {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+  }
+  
+  .achievements .work i {
+    width: fit-content;
+    font-size: 50px;
+    color: #333333;
+    border-radius: 50%;
+    border: 2px solid #333333;
+    padding: 12px;
+  }
+  
+  .achievements .work .work-heading {
+    font-size: 20px;
+    color: #333333;
+    text-transform: uppercase;
+    margin: 10px 0;
+  }
+  
+  .achievements .work .work-text {
+    font-size: 15px;
+    color: #585858;
+    margin: 10px 0;
+  }
+  
+  .about-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 80px;
+    border-top: 2px solid #eeeeee;
+  }
+  
+  .about-me img {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .about-me-text h2 {
+    font-size: 30px;
+    color: #333333;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .about-me-text p {
+    font-size: 15px;
+    color: #585858;
+    margin: 10px 0;
+  }
+  /* CSS for footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #302f49;
+    padding: 40px 80px;
+  }
+  
+  .footer .copy {
+    color: #fff;
+  }
+  
+  .bottom-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+  }
+  
+  .bottom-links .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+  }
+  
+  .bottom-links .links span {
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 10px 0;
+  }
+  
+  .bottom-links .links a {
+    text-decoration: none;
+    color: #a1a1a1;
+    padding: 10px 20px;
+  }
+  .card {
+    width: 190px;
+    height: 254px;
+    padding: .8em;
+    background: #f5f5f5;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+   }
+   
+   .card-img {
+    background-color: #ffcaa6;
+    height: 40%;
+    width: 100%;
+    border-radius: .5rem;
+    transition: .3s ease;
+   }
+   
+   .card-info {
+    padding-top: 10%;
+   }
+   
+   svg {
+    width: 20px;
+    height: 20px;
+   }
+   
+   .card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+   }
+   
+   /*Text*/
+   .text-title {
+    font-weight: 900;
+    font-size: 1.2em;
+    line-height: 1.5;
+   }
+   
+   .text-body {
+    font-size: .9em;
+    padding-bottom: 10px;
+   }
+   
+   /*Button*/
+   .card-button {
+    border: 1px solid #252525;
+    display: flex;
+    padding: .3em;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: .3s ease-in-out;
+   }
+   
+   /*Hover*/
+   .card-img:hover {
+    transform: translateY(-25%);
+    box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+   }
+   
+   .card-button:hover {
+    border: 1px solid #ffcaa6;
+    background-color: #ffcaa6;
+   }
+   /* *{
+    margin: 0px;
+    padding: 0px;
+   }
+   body{
+    font-family: arial;
+   } */
+   .main{
+   
+    margin: 200%;
+   }
+   
+   /* .card{
+        width: 20%;
+        display: inline-block;
+        box-shadow: 2px 2px 20px black;
+        border-radius: 5px; 
+        margin: 2%;
+        
+       } */
+   
+   .image img{
+     width: 100%;
+     border-top-right-radius: 5px;
+     border-top-left-radius: 5px;
+     max-height: 150px;
+
+     
+   
+    
+    }
+   
+   .title{
+    
+     text-align: center;
+     padding: 10px;
+     
+    }
+   
+   h1{
+     font-size: 20px;
+    }
+   
+   .des{
+     padding: 3px;
+     text-align: center;
+    
+     padding-top: 10px;
+           border-bottom-right-radius: 5px;
+     border-bottom-left-radius: 5px;
+   }
+   button{
+     margin-top: 40px;
+     margin-bottom: 10px;
+     background-color: white;
+     border: 1px solid black;
+     border-radius: 5px;
+     padding:10px;
+   }
+   button:hover{
+     background-color: black;
+     color: white;
+     transition: .5s;
+     cursor: pointer;
+   }
+   body {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  /* CSS for header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #302f49;
+  }
+  
+  .header .logo {
+    font-size: 30px;
+    font-family: -webkit-body;
+    color: #5edaf0;
+    text-decoration: solid;
+    margin-left: 30px;
+  }
+  
+  .nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #302f49;
+    margin-right: 20px;
+  }
+  
+  .nav-items a {
+    text-decoration: none;
+    color: #5edaf0;
+    padding: 35px 20px;
+  }
+  /* CSS for main section */
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 520px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://www.wework.com/ideas/wp-content/uploads/sites/4/2020/04/WeWork_MediumConferenceRoom-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .intro h1 {
+    font-family: sans-serif;
+    font-size: 60px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .intro p {
+    font-size: 20px;
+    color: #d1d1d1;
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+  
+  .intro button {
+    background-color: #5edaf0;
+    color: #022329;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+  }
+  
+  .achievements {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 80px;
+  }
+  
+  .achievements .work {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+  }
+  
+  .achievements .work i {
+    width: fit-content;
+    font-size: 50px;
+    color: #333333;
+    border-radius: 50%;
+    border: 2px solid #333333;
+    padding: 12px;
+  }
+  
+  .achievements .work .work-heading {
+    font-size: 20px;
+    color: #333333;
+    text-transform: uppercase;
+    margin: 10px 0;
+  }
+  
+  .achievements .work .work-text {
+    font-size: 15px;
+    color: #585858;
+    margin: 10px 0;
+  }
+  
+  .about-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 80px;
+    border-top: 2px solid #eeeeee;
+  }
+  
+  .about-me img {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .about-me-text h2 {
+    font-size: 30px;
+    color: #333333;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .about-me-text p {
+    font-size: 15px;
+    color: #585858;
+    margin: 10px 0;
+  }
+  /* CSS for footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #302f49;
+    padding: 40px 80px;
+  }
+  
+  .footer .copy {
+    color: #fff;
+  }
+  
+  .bottom-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+  }
+  
+  .bottom-links .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+  }
+  
+  .bottom-links .links span {
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 10px 0;
+  }
+  
+  .bottom-links .links a {
+    text-decoration: none;
+    color: #a1a1a1;
+    padding: 10px 20px;
+  }
+   /* /???? */
+   .card {
+    width: 220px;
+    height: 354px;
+    border-radius: 20px;
+    padding: 7px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    background-image: linear-gradient(144deg,#000000, #000000 50%,#00DDEB);
+  }
+  
+  .card__content {
+    background: rgb(0, 0, 0);
+    border-radius: 17px;
+    width: 100%;
+    height: 100%;
+  }
