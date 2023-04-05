@@ -35,6 +35,13 @@ export class ApiServiceService {
   deletemeeting(room_id:string){
     return this.http.delete(`http://localhost:3000/details/${room_id}`);
   }
+  getMeetingDetailById(room_id:String){
+    return this.http.get(`http://localhost:3000/getdetails/${room_id}`);
+
+  }
+  editMeetingDetails(room_id:string,data:any){
+    return this.http.get(`http://localhost:3000/details/${room_id}`,data);
+  }
 
 
  

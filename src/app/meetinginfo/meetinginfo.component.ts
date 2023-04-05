@@ -35,8 +35,32 @@ export class MeetinginfoComponent implements OnInit {
       },
       (error:any)=>{
         console.log('error aya delte kiya to',error);
-      }
-    )
-
+      })
   }
+  editMeeting(room_id:string){
+    this.apiservice.getMeetingDetailById(room_id).subscribe(
+      (response:any)=>{
+        console.log(response);
+      const editMeetingDetails={
+        name: 'New Meeting Name',
+        start_time: '2022-05-01T12:00:00Z',
+        end_time: '2022-05-01T13:00:00Z',
+        meeting_data: 'New Meeting Data',
+        purpose: 'New Meeting Purpose'
+      };
+      this.apiservice.editMeetingDetails(room_id,editMeetingDetails).subscribe(
+        (response:any)=>{
+          console.log(response);
+          
+        },
+      (error:any)=>{
+        console.log("error in updating",error);
+            }
+    );
+  },
+  (error:any)=>{
+    console.log(error);
+  }
+  );
+}
 }
