@@ -13,7 +13,7 @@
                        Email</label>
                   <input type="email"  class="form-control form-control-lg"
                 formControlName="email" placeholder="Enter your Email"
-                id="email" >
+                id="email">
                 
                 <span class="text-danger" *ngIf="(signupformcontrol['email'].touched||submitted)&& signupformcontrol['email'].invalid">
                   <div *ngIf="signupformcontrol['email'].errors?.['required']">Email is required.</div>
