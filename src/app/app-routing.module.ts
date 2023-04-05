@@ -22,8 +22,9 @@ const routes: Routes = [
   {path:'booking/:id',component:BookingComponent},
   {path:'calendar',component:CalendarComponent},
  {path:'meetinginfo',component:MeetinginfoComponent}
-
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

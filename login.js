@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 var cors = require("cors");
 const path = require("path");
-// const { log } = require("console");
+const { log } = require("console");
 
 
 const connection = mysql.createConnection({
@@ -13,6 +13,7 @@ const connection = mysql.createConnection({
   database: "meetingdetails",
   insecureAuth: true,
 });
+
 
 
 const app = express();
@@ -125,8 +126,40 @@ app.delete('/details/:room_id', (req, res) => {
     }
   });
 });
+
+app.put('/details/:room_id', function (request, response) {
+  const room_id = request.params.room_id;
+  let name = request.body.name;
+  let start_time = request.body.start_time;
+  let end_time = request.body.end_time;
+  let meeting_date = request.body.meeting_date;
+  let purpose = request.body.purpose;
+  connection.query(
+    `UPDATE meeting_details SET name=?,start_time=?,end_time=?,meeting_data=?,purpose=? WHERE room_id=?`,
+    [name, start_time, end_time, meeting_date, purpose, room_id],
+    function (error, result) {
+      if (error) throw error;
+      response.send(result);
+    }
+  )
+});
+
+app.get('/getdetails/:room_id', function (request, response) {
+  console.log(response);
+  let room_id = request.params.room_id;
+  connection.query(
+    "SELECT * FROM meeting_details WHERE room_id=?", [room_id],
+    (error, result) => {
+      if (error) throw error
+      response.send(result);
+    }
+  )
+});
+
 app.listen(3000, function () {
   console.log("myserver connect on 3000");
 });
 
-
+//i am chaning it
+//kookokokoko
+//lokoko
