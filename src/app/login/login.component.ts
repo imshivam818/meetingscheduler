@@ -11,8 +11,8 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
  
  
-    onloginclick(){
-        this.router.navigate(['/','signup'])
+ onloginclick(){
+ this.router.navigate(['/','signup'])
   }
   loginform!:FormGroup;
   submitted = false;
@@ -22,36 +22,31 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginform=this.fb.group({
-      email:[['',Validators.required,Validators.email]],
-      password:[['',Validators.required,Validators.maxLength(8)]],
-
-
-    })
-    
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.minLength(8)]],
+    });
   }
-  get loginformcontrol(){
+
+  get loginformcontrols(){
       return this.loginform.controls;
   }
 
-  submitForm(){
+  submitlogin(){
     const data = this.loginform.value;
     console.log('user data for login', data);
     this.apiService.login(data).subscribe(
       (response:any) => {
         console.log(response[0]);
-        if (response[0].email == this.loginform.value) {
+        if (response[0].email == this.loginform.value.email) {
           console.log(response[0],'this is what it s')
           // this.msg = 'User login successfully!';
-          this.submitted= false;
+          this.submitted= true;
           swal.fire('Logged in SUCCESSFULLYYYYY');
           //path to dashboard
           this.router.navigate(['/','dashboard']);
           localStorage.setItem('userId', response[0].id);
-          
-          // alert(localStorage.getItem('userId'))
-          // localStorage.removeItem('userId')
-          
-          
+          // alert(localStorage.getItem('userId'));
+          // localStorage.removeItem('userId');
         }
       },
       (error) => {
@@ -60,7 +55,6 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
 }
 
 

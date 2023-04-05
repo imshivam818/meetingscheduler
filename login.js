@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 var cors = require("cors");
 const path = require("path");
-// const { log } = require("console");
+const { log } = require("console");
 
 
 const connection = mysql.createConnection({
@@ -13,6 +13,7 @@ const connection = mysql.createConnection({
   database: "login",
   insecureAuth: true,
 });
+
 
 
 const app = express();
@@ -92,8 +93,7 @@ app.get('/details',function(request,response){
     )
 });
 app.post('/meetingdetails',function(request,response){
-  // console.log(request.body);
-  // let meeting_id=request.body.meeting_id;
+
   let room_id=request.body.room_id;
   let name= request.body.name;
   let start_time= request.body.start_time;
@@ -104,11 +104,8 @@ app.post('/meetingdetails',function(request,response){
   connection.query(
     `INSERT INTO meeting_details(room_id,name,start_time,end_time,meeting_date,purpose,userId) values("${room_id}","${name}","${start_time}","${end_time}","${meeting_date}","${purpose}","${userId}")`,
    function(error,result){
-    // console.log("result", result);
-    // console.log("error", error);
  if(error) throw error;
   response.send(result);
-
    }
   )
 });
@@ -128,5 +125,5 @@ app.delete('/details/:room_id', (req, res) => {
 app.listen(3000, function () {
   console.log("myserver connect on 3000");
 });
-
+//i am going to push this file
 

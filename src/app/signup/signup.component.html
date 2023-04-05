@@ -11,8 +11,9 @@
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example3cg" class="required">
                        Email</label>
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg"
-                formControlName="email" placeholder="Enter your Email" >
+                  <input type="email"  class="form-control form-control-lg"
+                formControlName="email" placeholder="Enter your Email"
+                id="email" >
                 
                 <span class="text-danger" *ngIf="(signupformcontrol['email'].touched||submitted)&& signupformcontrol['email'].invalid">
                   <div *ngIf="signupformcontrol['email'].errors?.['required']">Email is required.</div>
@@ -22,7 +23,7 @@
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label"  for="form3Example4cg" class="required">Password</label>
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"
+                  <input type="password"  class="form-control form-control-lg"
                  formControlName="password"
                 id="password"
                 placeholder="Enter your Password"
