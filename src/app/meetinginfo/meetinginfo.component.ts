@@ -41,7 +41,10 @@ export class MeetinginfoComponent implements OnInit {
         console.log('error aya delte kiya to',error);
       })
   }
-  editMeeting(room_id:string){
+  editMeeting(room_id :any){
+
+console.log(room_id)
+    return
     this.apiservice.getMeetingDetailById(room_id).subscribe(
       (response:any)=>{
         console.log(response);
