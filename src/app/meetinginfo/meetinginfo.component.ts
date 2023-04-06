@@ -3,6 +3,7 @@ import { ApiServiceService } from '../api-service.service';
 import { response } from 'express';
 import { Router } from '@angular/router';
 import { state } from '@angular/animations';
+
 @Component({
   selector: 'app-meetinginfo',
   templateUrl: './meetinginfo.component.html',
@@ -17,10 +18,10 @@ export class MeetinginfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getalldetails();
+ 
     
   }
  
-
   getalldetails(){
     this.apiservice.getalldata().subscribe(
       (response:any)=>{
@@ -44,7 +45,7 @@ export class MeetinginfoComponent implements OnInit {
   editMeeting(room_id :any){
 
 console.log(room_id)
-    return
+    
     this.apiservice.getMeetingDetailById(room_id).subscribe(
       (response:any)=>{
         console.log(response);
