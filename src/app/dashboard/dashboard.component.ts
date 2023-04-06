@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   room_name:string="";
   room_desc:string="";
   public roomDetails:any=[];
+  
   constructor(private apiservice:ApiServiceService,private router:Router) { }
 
 
