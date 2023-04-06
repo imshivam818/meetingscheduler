@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
   }
 
   bookmeeting(room_id:string){
-    console.log('roomid',room_id);
+    console.log('roomid()',room_id);
     this.router.navigate(['/booking',room_id]);
 
   }

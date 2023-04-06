@@ -43,7 +43,5 @@ export class ApiServiceService {
     return this.http.get(`http://localhost:3000/details/${room_id}`,data);
   }
 
-
- 
 }
 
