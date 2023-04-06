@@ -11,8 +11,8 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
  
  
- onloginclick(){
- this.router.navigate(['/','signup'])
+onloginclick(){
+        this.router.navigate(['/','signup'])
   }
   loginform!:FormGroup;
   submitted = false;
@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
     this.loginform=this.fb.group({
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required,Validators.minLength(8)]],
-    });
+
+
+    })
+    
   }
 
   get loginformcontrols(){
@@ -45,6 +48,7 @@ export class LoginComponent implements OnInit {
           //path to dashboard
           this.router.navigate(['/','dashboard']);
           localStorage.setItem('userId', response[0].id);
+          
           // alert(localStorage.getItem('userId'));
           // localStorage.removeItem('userId');
         }

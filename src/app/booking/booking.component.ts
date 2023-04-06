@@ -28,7 +28,7 @@ export class BookingComponent implements OnInit {
   constructor(private apiService:ApiServiceService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.route);
+    // console.log(this.route);
     this.room_id=this.route.snapshot.params['id'];
   }
 
@@ -59,5 +59,6 @@ export class BookingComponent implements OnInit {
       }
     );
   }
+  
 
 }

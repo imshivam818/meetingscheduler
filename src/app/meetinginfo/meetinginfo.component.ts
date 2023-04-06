@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import { response } from 'express';
+import { Router } from '@angular/router';
+import { state } from '@angular/animations';
 @Component({
   selector: 'app-meetinginfo',
   templateUrl: './meetinginfo.component.html',
@@ -8,12 +10,14 @@ import { response } from 'express';
 })
 export class MeetinginfoComponent implements OnInit {
   
+  
  
   public meetingDetails:any=[];
-    constructor(private apiservice:ApiServiceService) { }
+    constructor(private apiservice:ApiServiceService,private router:Router) { }
 
   ngOnInit(): void {
     this.getalldetails();
+    
   }
  
 
@@ -43,20 +47,23 @@ export class MeetinginfoComponent implements OnInit {
         console.log(response);
       const editMeetingDetails={
         name: 'New Meeting Name',
-        start_time: '2022-05-01T12:00:00Z',
-        end_time: '2022-05-01T13:00:00Z',
-        meeting_data: 'New Meeting Data',
+        start_time: '12:00:00',
+        end_time: '13:00:00',
+        meeting_date: '2022-05-01',
         purpose: 'New Meeting Purpose'
       };
       this.apiservice.editMeetingDetails(room_id,editMeetingDetails).subscribe(
         (response:any)=>{
-          console.log(response);
-          
+          this.getalldetails();
+          const updatedetials={...response,...editMeetingDetails};
+           this.router.navigate(['booking',room_id],{state:{data:updatedetials}});
+
         },
       (error:any)=>{
         console.log("error in updating",error);
             }
     );
+   
   },
   (error:any)=>{
     console.log(error);
