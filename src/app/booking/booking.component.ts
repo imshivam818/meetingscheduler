@@ -8,7 +8,7 @@ import { ActivatedRoute,Router } from '@angular/router';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-
+  meetingDetails:any;
   room_id:string='';
   meeting_id:string='';
   name:string='';
@@ -30,6 +30,9 @@ export class BookingComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.route);
     this.room_id=this.route.snapshot.params['id'];
+    this.meetingDetails=this.route.snapshot.params['meeting'];
+    console.log(this.meetingDetails);
+    
   }
 
   bookingForm(){
