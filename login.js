@@ -38,7 +38,7 @@ app.get("/", function (request, response) {
 
 
 
-app.post("/login", function (request, response) {
+app.post("/login",(request, response)=> {
   let email = request.body.email;
   let password = request.body.password;
   if (email && password) {
@@ -62,7 +62,7 @@ app.post("/login", function (request, response) {
     response.send("Please enter Username and Password!");
   }
 });
-app.post('/signup',function(request,response){
+app.post('/signup',(request,response)=>{
        let email= request.body.email;
        let password= request.body.password;
        
@@ -74,7 +74,7 @@ app.post('/signup',function(request,response){
         }
        )
   });
-app.get('/roomdetails',function(request,response){
+app.get('/roomdetails',(request,response)=>{
     connection.query(
      "SELECT * FROM room_details ",
      (error,result)=>{
@@ -83,7 +83,7 @@ app.get('/roomdetails',function(request,response){
      }
     )
 });
-app.get('/details',function(request,response){
+app.get('/details',(request,response)=>{
     connection.query(
      "SELECT * FROM meeting_details",
      (error,result)=>{
@@ -122,16 +122,16 @@ app.delete('/details/:room_id', (req, res) => {
     }
   });
 });
-app.get('/details/:room_id',(request,response)=>{
-  let room_id=request.params.room_id;
-  connection.query(
-   "SELECT * FROM meeting_details WHERE room_id=?",[room_id],
-   (error,result)=>{
- if(error) throw error
-  response.send(result);
-   }
-  )
-});
+// app.get('/details/:room_id',(request,response)=>{
+//   let room_id=request.params.room_id;
+//   connection.query(
+//    "SELECT * FROM meeting_details WHERE room_id=?",[room_id],
+//    (error,result)=>{
+//  if(error) throw error
+//   response.send(result);
+// //    }
+// //   )
+// // });
 
 app.put('/details/:room_id',function(request,response){
   const room_id=request.params.room_id;
@@ -140,18 +140,40 @@ app.put('/details/:room_id',function(request,response){
   let end_time=request.body.end_time;
   let meeting_date=request.body.meeting_date;
   let purpose=request.body.purpose;
-  connection.query(
-    `UPDATE meeting_details SET name=?,start_time=?,end_time=?,meeting_date=?,purpose=? WHERE room_id=?`,
-    [name,start_time,end_time,meeting_date,purpose,room_id],
-    //`UPDATE meeting_details SET name = '${name}', start_time = '${start_time}', end_time = '${end_time}', meeting_date = '${meeting_date}', purpose = '${purpose}' WHERE room_id = '${room_id}'`,
-    function(error,result){
-      if(error) throw error;
-      response.send(result);
-    }
-  )
-});
-app.listen(3000, function () {
-  console.log("myserver connect on 3000");
+  if(meeting_id == ''){
+    connection.query(
+      `UPDATE meeting_details SET name=?,start_time=?,end_time=?,meeting_date=?,purpose=? WHERE room_id=?`,
+      [name,start_time,end_time,meeting_date,purpose,room_id],
+      //`UPDATE meeting_details SET name = '${name}', start_time = '${start_time}', end_time = '${end_time}', meeting_date = '${meeting_date}', purpose = '${purpose}' WHERE room_id = '${room_id}'`,
+      function(error,result){
+        if(error) throw error;
+        response.send(result);
+      }
+    )
+  } else{
+    connection.query(
+      `UPDATE meeting_details SET name=?,start_time=?,end_time=?,meeting_date=?,purpose=? WHERE room_id=?`,
+      [name,start_time,end_time,meeting_date,purpose,room_id],
+      //`UPDATE meeting_details SET name = '${name}', start_time = '${start_time}', end_time = '${end_time}', meeting_date = '${meeting_date}', purpose = '${purpose}' WHERE room_id = '${room_id}'`,
+      function(error,result){
+        if(error) throw error;
+        response.send(result);
+      }
+    )
+  }
+ 
 });
 
-//i am changing this to check it 
+// app.put('/details/:id',(req,res)=>{
+//   //first we will get the room id
+//   const room_id=req.params.room_id;
+
+//   //now what will we the 
+//     connection.query()
+
+// });
+
+
+app.listen(3000,()=> {
+  console.log("myserver connect on 3000");
+});

@@ -11,20 +11,12 @@ export class DashboardComponent implements OnInit {
   room_id:string="";
   room_name:string="";
   room_desc:string="";
-
-
-
   public roomDetails:any=[];
-  
-  
-
   constructor(private apiservice:ApiServiceService,private router:Router) { }
 
 
   ngOnInit(): void {
     this.getroomid();
-  
-
   }
   testfuntion(value:any){
     alert(value);
@@ -47,6 +39,5 @@ export class DashboardComponent implements OnInit {
   bookmeeting(room_id:string){
     console.log('roomid',room_id);
     this.router.navigate(['/booking',room_id]);
-
   }
 }
