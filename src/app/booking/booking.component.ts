@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute,Router } from '@angular/router';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -34,6 +35,7 @@ export class BookingComponent implements OnInit {
     console.log(this.meetingDetails);
     
   }
+   
 
   bookingForm(){
     const data = {
