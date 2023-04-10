@@ -44,7 +44,7 @@ export class BookingComponent implements OnInit {
   bookingForm(){
     const data = {
       name: this.name,
-      room_id: this.room_id,
+      // room_id: this.room_id,
       meeting_id: this.meeting_id,
       start_time:this.start_time,
       end_time:this.end_time,
