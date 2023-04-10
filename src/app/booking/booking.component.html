@@ -21,51 +21,44 @@
 						</div>
 						<form *ngIf="meetingform">
 							<div class="form-group">
-								
-								<span class="form-label" >Room id</span>
-								<input class="form-control" 
-								[(ngModel)]="room_id"
-								[ngModelOptions]="{standalone:true}"
-								disabled >
-                            </div>
+
+								<span class="form-label">Room id</span>
+								<input class="form-control" [(ngModel)]="room_id" [ngModelOptions]="{standalone:true}"
+									disabled>
+							</div>
 							<div class="form-group">
 
-								<span class="form-label" >Name</span>
-								<input class="form-control" type="text" placeholder="Enter Your name"
-								[(ngModel)]="name"
-								[ngModelOptions]="{standalone:true}" >
-                            </div>
+								<span class="form-label">Name</span>
+								<input class="form-control" type="text" placeholder="Enter Your name" [(ngModel)]="name"
+									[ngModelOptions]="{standalone:true}">
+							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Start-time</span>
-										<input class="form-control" type="time"
-										[(ngModel)]="start_time"
-										[ngModelOptions]="{standalone:true}" >
+										<input class="form-control" type="time" [(ngModel)]="start_time"
+											[ngModelOptions]="{standalone:true}">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="form-label" >End-time</label>
-										<input class="form-control" type="time" 
-										[(ngModel)]="end_time"
-										[ngModelOptions]="{standalone:true}" >
+										<label class="form-label">End-time</label>
+										<input class="form-control" type="time" [(ngModel)]="end_time"
+											[ngModelOptions]="{standalone:true}">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Meeting day</span>
-										<input class="form-control" type="date" 
-										[(ngModel)]="meeting_date"
-										[ngModelOptions]="{standalone:true}" >
+										<input class="form-control" type="date" [(ngModel)]="meeting_date"
+											[ngModelOptions]="{standalone:true}">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Meeting purpose</span>
 										<input class="form-control" type="text" placeholder="Enter Your purpose"
-										[(ngModel)]="purpose"
-										[ngModelOptions]="{standalone:true}" >
+											[(ngModel)]="purpose" [ngModelOptions]="{standalone:true}">
 									</div>
 								</div>
 
@@ -73,14 +66,12 @@
 
 							<button class="submit-btn" (click)="bookingForm()">submit</button>
 
-					
-					<div class="form-btn">
-						<!-- <button class="submit-btn">submit</button> -->
+
+							<div class="form-btn">
+								<!-- <button class="submit-btn">submit</button> -->
+							</div>
+						</form>
 					</div>
-					</form>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-

@@ -92,6 +92,7 @@ app.get('/details', function (request, response) {
     }
   )
 });
+// post api 
 app.post('/meetingdetails', function (request, response) {
   // console.log(request.body);
   // let meeting_id=request.body.meeting_id;
@@ -116,6 +117,8 @@ app.post('/meetingdetails', function (request, response) {
     }
   )
 });
+
+// delete api
 app.delete('/details/:room_id', (req, res) => {
   const room_id = req.params.room_id;
   const query = `DELETE FROM meeting_details WHERE room_id = '${room_id}'`;

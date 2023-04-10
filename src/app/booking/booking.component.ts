@@ -1,14 +1,17 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute,Router } from '@angular/router';
-// import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+
+  // LoginForm!:FormGroup;
+
 
   room_id:string='';
   meeting_id:string='';
@@ -26,15 +29,16 @@ export class BookingComponent implements OnInit {
   meetingform=true;
   
 
-
  
-  constructor(private apiService:ApiServiceService,private router:Router,private route:ActivatedRoute,
-     ) { }
+  constructor(private apiService:ApiServiceService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     console.log(this.route);
     this.room_id=this.route.snapshot.params['id'];
-    // this.bookingForm.patchValue(this.data);
+
+    // this.LoginForm = new FormGroup({
+    //   'userData': new FormGroup({
+    //       'name':new FormControl(null,[Validators.required]),
   }
 
   bookingForm(){
@@ -53,23 +57,9 @@ export class BookingComponent implements OnInit {
     // localStorage.setItem('userId', response[0].id);
           // alert(localStorage.getItem('userId'));
           // localStorage.removeItem('userId');
-    // console.log('user data for meetingdetails', data);
-    // {
-      // if (this.bookingForm){
+    console.log('user data for meetingdetails', data);
 
-    // if(this.data){
-    //   this.apiService.editMeetingDetails(this.data.id,this.bookingForm.value).subscribe({
-    //     next: (val: any) => {
-    //       alert('Employee Updated successfully');   
-    //       // this._dialogRef.close(true);
-    //     },
-    //     error: (err: any) => {
-    //       console.error(err); 
-    //     },
-    //   });
-
-    // }
-    // else
+    
     this.apiService.meetingdetails(data).subscribe(
       (response:any) => {
         console.log(response,"response")
