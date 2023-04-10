@@ -39,7 +39,7 @@ export class BookingComponent implements OnInit {
       end_time: ['', [Validators.required]],
       purpose: ['', [Validators.required]],
       meeting_date: ['', [Validators.required]],
-      userId:[this.userId]
+      userId:[this.userId],
     });
     
   }
