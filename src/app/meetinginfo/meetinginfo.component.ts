@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
-// import { response } from 'express';
+import { response } from 'express';
 import { Router } from '@angular/router';
-// import { state } from '@angular/animations';
+import { state } from '@angular/animations';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 @Component({
   selector: 'app-meetinginfo',
@@ -12,6 +12,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 export class MeetinginfoComponent implements OnInit {
   public meetingDetails: any = [];
   public meeting_id: any = [];
+
 
   constructor(private apiservice: ApiServiceService, private router: Router) {}
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class MeetinginfoComponent implements OnInit {
     this.apiservice.deletemeeting(room_id).subscribe(
       (response: any) => {
         window.alert(response);
-        // this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==room_id);
+        this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==room_id);
         this.getalldetails();
       },
       (error: any) => {
@@ -63,7 +64,9 @@ export class MeetinginfoComponent implements OnInit {
   //   );
 
   editMeeting(meeting: any) {
+   
     console.log(meeting);
+
     return
     this.router.navigate(['/booking/:id'], meeting);
   }

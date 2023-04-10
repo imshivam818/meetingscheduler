@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute,Router } from '@angular/router';
@@ -40,6 +40,7 @@ export class BookingComponent implements OnInit {
     //   'userData': new FormGroup({
     //       'name':new FormControl(null,[Validators.required]),
   }
+   
 
   bookingForm(){
     const data = {
