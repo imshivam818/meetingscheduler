@@ -10,12 +10,14 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
   styleUrls: ['./meetinginfo.component.css'],
 })
 export class MeetinginfoComponent implements OnInit {
+  [x: string]: any;
   public meetingDetails: any = [];
   public meeting_id: any = [];
-  public redirectBooking: any;
-  public bookingData: any;
-
-
+  public redirectBooking : boolean = false;
+  public bookingFormDetails : any;
+  public bookingData : any;
+ 
+  
   constructor(private apiservice: ApiServiceService, private router: Router) {}
   ngOnInit(): void {
     this.getalldetails();
@@ -29,8 +31,10 @@ export class MeetinginfoComponent implements OnInit {
   deletedetails(meeting_id: string) {
     this.apiservice.deletemeeting(meeting_id).subscribe(
       (response: any) => {
-        window.alert(response);
-        this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==meeting_id);
+        if(response){
+          window.alert("Deleted  details confirm")
+        }
+        // this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==meeting_id);
         this.getalldetails();
       },
       (error: any) => {
@@ -38,6 +42,8 @@ export class MeetinginfoComponent implements OnInit {
       }
     );
   }
+  
+  
   //   editMeeting(room_id:any){
   //     this.apiservice..subscribe(
   //       (response:any)=>{
@@ -68,10 +74,6 @@ export class MeetinginfoComponent implements OnInit {
   editMeeting(meeting: any) {
     this.redirectBooking = true;
     this.bookingData = meeting;
-     
-    // console.log(meeting);
-
-    return
-    this.router.navigate(['/booking/:id'], meeting);
+    
   }
 }

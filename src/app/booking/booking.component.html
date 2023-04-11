@@ -6,28 +6,80 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Booking Form HTML Template</title>
-</head>
-
-<body>
-  <div id="booking" class="section">
-    <div class="section-center">
-      <div class="container">
-        <div class="row">
-          <div class="booking-form">
-            <div class="form-header">
-              <h1>Create your Meeting</h1>
-            </div>
-            <form [formGroup]="bookingForm" (ngSubmit)="booking()">
-              <!-- <div class="form-group">
+  <body>
+    
+    <div id="booking" class="section">
+      <div class="section-center">
+        <div class="container">
+          <div class="row">
+            <div class="booking-form">
+              <div class="form-header">
+                <h1>Create your Meeting</h1>
+              </div>
+              <form [formGroup]="bookingForm" (ngSubmit)="booking()">
+                <!-- <div class="form-group">
                   <span class="form-label">Room id</span>
                   <input class="form-control"
 				  formControlName="room_id"
 				  />
                 </div> -->
-              <div class="form-group">
-                <span class="form-label">Name</span>
-                <input class="form-control" type="text" placeholder="Enter Your name" formControlName="name" required />
+                <div class="form-group">
+                  <span class="form-label">Name</span>
+                  <input
+                    class="form-control"
+                    type="text" pattern="[a-zA-Z]" 
+                    placeholder="Enter Your name"
+                    formControlName="name"/>
+                    <span class="text-danger"  *ngIf="bookingFormcontrols['name'].invalid">
+                      <div *ngIf="bookingFormcontrols['name'].errors?.['required']">Name is required.</div> 
+                      
+                    </span>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <span class="form-label">Start-time</span>
+                      <input
+                        class="form-control"
+                        type="time" 
+                        formControlName="start_time"
+                      />
+                      <!-- <span class="validity"></span>  -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">End-time</label>
+                      <input
+                        class="form-control"
+                        type="time"
+                        formControlName="end_time"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <span class="form-label">Meeting day</span>
+                      <input
+                        class="form-control"
+                        type="date" 
+                        formControlName="meeting_date"
+                        />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <span class="form-label">Meeting purpose</span>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Enter Your purpose"
+                        formControlName="purpose"
+                      />
+                    </div>
+                  </div>
+                </div>
 
                 <span class="text-danger"
                   *ngIf="(bookingFormcontrols['name'].touched||submitted)&& bookingFormcontrols['name'].invalid">
@@ -90,10 +142,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</body>
-
+    </div> 
+  </body>
 </html>
 
 <!-- hi i am pushing this -->
