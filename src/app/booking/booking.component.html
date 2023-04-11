@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    
     <div id="booking" class="section">
       <div class="section-center">
         <div class="container">
@@ -29,19 +30,25 @@
                   <span class="form-label">Name</span>
                   <input
                     class="form-control"
-                    type="text"
+                    type="text" pattern="[a-zA-Z]" 
                     placeholder="Enter Your name"
                     formControlName="name"/>
+                    <span class="text-danger"  *ngIf="bookingFormcontrols['name'].invalid">
+                      <div *ngIf="bookingFormcontrols['name'].errors?.['required']">Name is required.</div> 
+                      
+                    </span>
                 </div>
+
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <span class="form-label">Start-time</span>
                       <input
                         class="form-control"
-                        type="time"
+                        type="time" 
                         formControlName="start_time"
                       />
+                      <!-- <span class="validity"></span>  -->
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -59,9 +66,9 @@
                       <span class="form-label">Meeting day</span>
                       <input
                         class="form-control"
-                        type="date"
+                        type="date" 
                         formControlName="meeting_date"
-                      />
+                        />
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -87,6 +94,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   </body>
 </html>
