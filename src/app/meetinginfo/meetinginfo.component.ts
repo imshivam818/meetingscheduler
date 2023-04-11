@@ -24,11 +24,11 @@ export class MeetinginfoComponent implements OnInit {
       this.meetingDetails = response;
     });
   }
-  deletedetails(room_id: string) {
-    this.apiservice.deletemeeting(room_id).subscribe(
+  deletedetails(meeting_id: string) {
+    this.apiservice.deletemeeting(meeting_id).subscribe(
       (response: any) => {
         window.alert(response);
-        this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==room_id);
+        this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==meeting_id);
         this.getalldetails();
       },
       (error: any) => {
@@ -64,7 +64,7 @@ export class MeetinginfoComponent implements OnInit {
   //   );
 
   editMeeting(meeting: any) {
-   
+     
     console.log(meeting);
 
     return

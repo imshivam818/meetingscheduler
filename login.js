@@ -119,9 +119,9 @@ app.post('/meetingdetails', function (request, response) {
 });
 
 // delete api
-app.delete('/details/:room_id', (req, res) => {
-  const room_id = req.params.room_id;
-  const query = `DELETE FROM meeting_details WHERE room_id = '${room_id}'`;
+app.delete('/details/:meeting_id', (req, res) => {
+  const meeting_id = req.params.meeting_id;
+  const query = `DELETE FROM meeting_details WHERE meeting_id = '${meeting_id}'`;
 
   connection.query(query, (error, results, fields) => {
     if (error) {
