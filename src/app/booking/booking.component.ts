@@ -13,7 +13,7 @@ export class BookingComponent implements OnInit {
   submitted = false;
   room_id:string='';
   @Input() bookingFormDetails: any;
-  
+
   // room_id:any= this.route.snapshot.params['room_id'];
   // meetingDetails: any=this.route.snapshot.params['meeting'];
   //varibles always in camel case;
@@ -45,8 +45,18 @@ export class BookingComponent implements OnInit {
       userId:[this.userId],
     });
 
-   
+
+console.log(this.bookingFormDetails);
+    this.editinfo()
     
+  }
+  editinfo(){
+    console.log(this.bookingFormDetails.meeting_id)
+    console.log(this.bookingFormDetails)
+    if(this.bookingFormDetails.meeting_id){
+      console.log(this.bookingFormDetails)
+      this.bookingForm.patchValue({name:this.bookingFormDetails.name})
+    }
   }
 
   minDate:any = "";

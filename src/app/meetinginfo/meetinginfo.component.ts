@@ -12,6 +12,8 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 export class MeetinginfoComponent implements OnInit {
   public meetingDetails: any = [];
   public meeting_id: any = [];
+  public redirectBooking: any;
+  public bookingData: any;
 
 
   constructor(private apiservice: ApiServiceService, private router: Router) {}
@@ -64,8 +66,10 @@ export class MeetinginfoComponent implements OnInit {
   //   );
 
   editMeeting(meeting: any) {
+    this.redirectBooking = true;
+    this.bookingData = meeting;
      
-    console.log(meeting);
+    // console.log(meeting);
 
     return
     this.router.navigate(['/booking/:id'], meeting);
