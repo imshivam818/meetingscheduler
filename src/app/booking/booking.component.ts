@@ -43,10 +43,9 @@ export class BookingComponent implements OnInit {
   ngOnInit(): void {
     this.room_id=this.route.snapshot.params['id'];
     this.bookingForm = this.fb.group({
-      // meetingDetails: ['', [Validators.required]],
       meeting_id: ['', [Validators.required]],
       room_id : [this.room_id],
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(10),Validators.pattern("^[A-Za-z][A-Za-z0-9_]{7,29}$")]],
       start_time: ['', [Validators.required]],
       end_time: ['', [Validators.required]],
       purpose: ['', [Validators.required]],
@@ -54,22 +53,19 @@ export class BookingComponent implements OnInit {
       userId:[this.userId],
     });
     // console.log(this.bookingFormDetails);
-
     this.editinfo()
-   
   } 
 
   editinfo(){
     console.log(this.bookingFormDetails);
-    if(!this.bookingFormDetails){
+    if(this.bookingFormDetails){
+     this.bookingForm.patchValue({name:this.bookingFormDetails.name}) 
+     this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time})  
+     this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time})  
+     this.bookingForm.patchValue({meeting_date: new Date(this.bookingFormDetails.meeting_date) })  
+     this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose})  
 
-      this.bookingForm.patchValue({name:this.bookingFormDetails.name}) 
-this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time})  
-this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time})  
-this.bookingForm.patchValue({meeting_date: new Date(this.bookingFormDetails.meeting_date) })  
-this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose})  
-
-    }
+    }              
 
 
    }

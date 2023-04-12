@@ -9,8 +9,8 @@ const { log } = require("console");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Gopi@2406",
-  database: "meetingapp",
+  password: "Shiv@m123",
+  database: "login",
   insecureAuth: true,
 });
 
