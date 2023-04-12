@@ -32,7 +32,7 @@ export class MeetinginfoComponent implements OnInit {
     this.apiservice.deletemeeting(meeting_id).subscribe(
       (response: any) => {
         if(response){
-          window.alert("Deleted  details confirm")
+          window.alert("your meeting will be delete now")
         }
         // this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==meeting_id);
         this.getalldetails();

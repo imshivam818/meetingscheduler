@@ -12,6 +12,8 @@ export class BookingComponent implements OnInit {
   bookingForm!: FormGroup;
   submitted = false;
   room_id:string='';
+  
+  
 
   @Input() bookingFormDetails :any;
  
@@ -51,26 +53,29 @@ export class BookingComponent implements OnInit {
       meeting_date: ['', [Validators.required]],
       userId:[this.userId]
     });
-    console.log(this.bookingFormDetails);
+    // console.log(this.bookingFormDetails);
 
     this.editinfo()
+   
   } 
 
   editinfo(){
-    console.log( this.bookingFormDetails.meeting_id)
-    console.log(this.bookingFormDetails)
+    console.log(this.bookingFormDetails);
+    if(!this.bookingFormDetails){
 
-    if(this.bookingFormDetails.meeting_id){
-      console.log(this.bookingFormDetails)
-this.bookingForm.patchValue({name:this.bookingFormDetails.name})  
+      this.bookingForm.patchValue({name:this.bookingFormDetails.name}) 
+this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time})  
+this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time})  
+this.bookingForm.patchValue({meeting_date: new Date(this.bookingFormDetails.meeting_date) })  
+this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose})  
+
+    }
+
+
    }
 
-  }
-    
-   
   
-  
- 
+
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 
@@ -91,3 +96,4 @@ this.bookingForm.patchValue({name:this.bookingFormDetails.name})
     );
   }
 }
+
