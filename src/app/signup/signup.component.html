@@ -9,42 +9,51 @@
               <h2 class="text-center mb-5">Register Here</h2>
               <form [formGroup]="signupform" (ngSubmit)="submitForm()">
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3cg" class="required">
-                       Email</label>
-                  <input type="email"  class="form-control form-control-lg"
-                formControlName="email" placeholder="Enter your Email"
-                id="email">
-                
-                <span class="text-danger" *ngIf="(signupformcontrol['email'].touched||submitted)&& signupformcontrol['email'].invalid">
-                  <div *ngIf="signupformcontrol['email'].errors?.['required']">Email is required.</div>
-                  <div *ngIf="signupformcontrol['email'].errors?.['email']">Email must be a valid email address.</div>
-                </span>
+                  <label class="form-label" for="form3Example3cg" class="required">
+                    Email</label>
+                  <input type="email" class="form-control form-control-lg" formControlName="email"
+                    placeholder="Enter your Email" id="email">
+
+                  <span class="text-danger"
+                    *ngIf="(signupformcontrol['email'].touched||submitted)&& signupformcontrol['email'].invalid">
+                    <div *ngIf="signupformcontrol['email'].errors?.['required']">Email is required.</div>
+                    <div *ngIf="signupformcontrol['email'].errors?.['email']">Email must be a valid email address.</div>
+                  </span>
                 </div>
                 <div class="form-outline mb-4">
-                    <label class="form-label"  for="form3Example4cg" class="required">Password</label>
-                  <input type="password"  class="form-control form-control-lg"
-                 formControlName="password"
-                id="password"
-                placeholder="Enter your Password"
-                />
-                <span class="text-danger" *ngIf="(signupformcontrol['password'].touched || submitted) &&
+                  <label class="form-label" for="form3Example4cg" class="required">Password</label>
+                  <input type="password" class="form-control form-control-lg" formControlName="password" id="password"
+                    placeholder="Enter your Password" />
+                  <span class="text-danger" *ngIf="(signupformcontrol['password'].touched || submitted) &&
                 signupformcontrol['password'].invalid">
-                <div *ngIf="signupformcontrol['password'].errors?.['required']">Password is required.</div>
-                <div *ngIf="signupformcontrol['password'].errors?.['minlength']">Password must be at least 8 characters long.</div>
-              </span>
+                    <div *ngIf="signupformcontrol['password'].errors?.['required']">Password is required.</div>
+                    <div *ngIf="signupformcontrol['password'].errors?.['minlength']">Password must be at least 8
+                      characters long.</div>
+                  </span>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cg" class="required">Confirm Password</label>
+                  <input type="cpassword" class="form-control form-control-lg" formControlName="cpassword"
+                    id="cpassword" placeholder="Enter your Confirm Password" />
+                  <span class="text-danger" *ngIf="(signupformcontrol['cpassword'].touched || submitted) &&
+              signupformcontrol['cpassword'].invalid">
+                    <div *ngIf="signupformcontrol['cpassword'].errors?.['required']">Password is required.</div>
+                    <div *ngIf="signupformcontrol['cpassword'].errors?.['minlength']">Password must be at least 8
+                      characters long.</div>
+                  </span>
                 </div>
                 <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                  <label class="form-check-label" for="form2Example3g" >
+                  <label class="form-check-label" for="form2Example3g">
                     I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
                   </label>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button type="submit"
-                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" [disabled]="signupform.invalid" >Register</button>
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                    [disabled]="signupform.invalid">Register</button>
                 </div>
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a
-                    class="fw-bold text-body" routerLink="/login"><u>Login here</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a class="fw-bold text-body"
+                    routerLink="/login"><u>Login here</u></a></p>
               </form>
             </div>
           </div>
