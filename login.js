@@ -9,8 +9,8 @@ const { log } = require("console");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Kum@r1999",
-  database: "bookingdetail",
+  password: "Gopi@2406",
+  database: "meetingapp",
   insecureAuth: true,
 });
 
@@ -111,8 +111,8 @@ app.post('/meetingdetails', function (request, response) {
   connection.query(
     `INSERT INTO meeting_details(room_id,name,start_time,end_time,meeting_date,purpose,userId) values("${room_id}","${name}","${start_time}","${end_time}","${meeting_date}","${purpose}","${userId}")`,
     function (error, result) {
-      // console.log("result", result);
-      // console.log("error", error);
+      console.log("result", result);
+      console.log("error", error);
       if (error) throw error;
       response.send(result);
 

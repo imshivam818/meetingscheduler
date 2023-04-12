@@ -3,7 +3,7 @@ import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-// import { DialogRef, DIALOG_DATA } from '@angular/core';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -65,15 +65,11 @@ console.log(this.bookingFormDetails);
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
         end_time:this.bookingFormDetails.end_time,
-        meeting_date:this.bookingFormDetails.meeting_date,
+        meeting_date: this.minDate,
         purpose:this.bookingFormDetails.purpose
 
       });
-    //   this.bookingForm.patchValue({name:this.bookingFormDetails.name});
-    //   this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time});
-    //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
-    //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
-    //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
+    
     }
   }
 
