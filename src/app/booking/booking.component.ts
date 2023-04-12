@@ -3,6 +3,7 @@ import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -12,10 +13,11 @@ export class BookingComponent implements OnInit {
   bookingForm!: FormGroup;
   submitted = false;
   room_id:string='';
-  
+ 
   
 
   @Input() bookingFormDetails :any;
+
  
  
   
@@ -58,16 +60,16 @@ export class BookingComponent implements OnInit {
     this.editinfo()
    
   } 
-
   editinfo(){
     console.log(this.bookingFormDetails);
-    if(!this.bookingFormDetails){
+    if(this.bookingFormDetails){
 
-      this.bookingForm.patchValue({name:this.bookingFormDetails.name}) 
-this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time})  
-this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time})  
-this.bookingForm.patchValue({meeting_date: new Date(this.bookingFormDetails.meeting_date) })  
-this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose})  
+      this.bookingForm.patchValue(
+        {name:this.bookingFormDetails.name,
+        start_time:this.bookingFormDetails.start_time,end_time:this.bookingFormDetails.end_time,  
+        meeting_date:this.bookingFormDetails.meeting_date,purpose:this.bookingFormDetails.purpose  
+        
+        })  
 
     }
 

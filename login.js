@@ -66,6 +66,7 @@ app.post('/signup',(request,response)=>{
        let email= request.body.email;
        let password= request.body.password;
        
+       
        connection.query(
         "insert into user(email,password) values(?,?)",[email,password],
         function(error,result){
