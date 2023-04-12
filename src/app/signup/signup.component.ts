@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import swal from 'sweetalert2';
-import { FormBuilder,FormGroup,Validators} from '@angular/forms';
+import { FormBuilder,FormGroup,Validators,PatternValidator} from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -19,8 +19,9 @@ export class SignupComponent implements OnInit {
   ngOnInit(){
     this.signupform=this.fb.group({
       //now here we need to have two fields 
-      email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(8)]]
+      email:['',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      password:['',[Validators.required,Validators.minLength(8)]],
+      cpassword:['',[Validators.required,Validators.minLength(8)]]
 
     });
   }
@@ -39,13 +40,24 @@ export class SignupComponent implements OnInit {
           if(this.signupform.invalid){
             swal.fire('Form is invalid');
           }
-          swal.fire('Signup SUCCESSFULLYYYYY')
+          swal.fire('Signup Successfully')
       },
       (error: any) => {
         console.log(error);
         swal.fire("Please fill the INFO");
-      }
+      },
+      // checkPasswords(password: string, cpassword: string) {
+      //   this.isConfirmPasswordDirty = true;
+      //   if (password == cpassword) {
+      //     this.passwordsMatching = true;
+      //     this.confirmPasswordClass = 'form-control is-valid';
+      //   } else {
+      //     this.passwordsMatching = false;
+      //     this.confirmPasswordClass = 'form-control is-invalid';
+      //   }
     );
   }
+
+  
 
 }

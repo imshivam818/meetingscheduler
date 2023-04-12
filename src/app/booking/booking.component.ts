@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, inject } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+// import { DialogRef, DIALOG_DATA } from '@angular/core';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -12,21 +13,15 @@ export class BookingComponent implements OnInit {
   bookingForm!: FormGroup;
   submitted = false;
   room_id:string='';
+  @Input() bookingFormDetails: any;
+  
 
-  @Input() bookingFormDetails :any;
- 
- 
-  
-  
- 
-  
+
   // room_id:any= this.route.snapshot.params['room_id'];
   // meetingDetails: any=this.route.snapshot.params['meeting'];
   //varibles always in camel case;
 
   userId: any = localStorage.getItem('userId');
-
- 
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
@@ -35,11 +30,14 @@ export class BookingComponent implements OnInit {
     private apiService: ApiServiceService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+
+    // @Inject(DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
     this.getDate();
+
     this.room_id=this.route.snapshot.params['id'];
     this.bookingForm = this.fb.group({
       // meetingDetails: ['', [Validators.required]],
@@ -52,10 +50,32 @@ export class BookingComponent implements OnInit {
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
     });
-    console.log(this.bookingFormDetails);
+    
 
-    this.editinfo()
-  } 
+
+console.log(this.bookingFormDetails);
+    this.editinfo() 
+  }
+
+  editinfo(){
+    console.log(this.bookingFormDetails.meeting_id);
+    if(this.bookingFormDetails.meeting_id)
+{
+      this.bookingForm.patchValue({meeting_id:this.bookingFormDetails.meeting_id,
+        name:this.bookingFormDetails.name,
+        start_time:this.bookingFormDetails.start_time,
+        end_time:this.bookingFormDetails.end_time,
+        meeting_date:this.bookingFormDetails.meeting_date,
+        purpose:this.bookingFormDetails.purpose
+
+      });
+    //   this.bookingForm.patchValue({name:this.bookingFormDetails.name});
+    //   this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time});
+    //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
+    //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
+    //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
+    }
+  }
 
   minDate:any = "";
   getDate(){
@@ -71,27 +91,11 @@ export class BookingComponent implements OnInit {
       month = '0' + month;
     }
     // console.log(month);
-
     var year = date.getFullYear();
     this.minDate = year + "-" + month + "-" + toDate;
     // console.log(year)
   }
-
-  editinfo(){
-    console.log( this.bookingFormDetails.meeting_id)
-    console.log(this.bookingFormDetails)
-
-    if(this.bookingFormDetails.meeting_id){
-      console.log(this.bookingFormDetails)
-this.bookingForm.patchValue({name:this.bookingFormDetails.name})  
-   }
-
-  }
-    
-   
   
-  
- 
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 

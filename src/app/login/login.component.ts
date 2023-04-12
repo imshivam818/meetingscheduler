@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginform = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
@@ -42,10 +42,10 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         console.log(response[0]);
         if (response[0].email == this.loginform.value.email) {
-          console.log(response[0], 'this is what it s');
+          console.log(response[0], 'this is what');
           // this.msg = 'User login successfully!';
           this.submitted = true;
-          swal.fire('Logged in SUCCESSFULLYYYYY');
+          // swal.fire('Logged in SUCCESSFULLYYYYY');
           //path to dashboard
           this.router.navigate(['/', 'dashboard']);
           localStorage.setItem('userId', response[0].id);
