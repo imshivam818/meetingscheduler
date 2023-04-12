@@ -50,17 +50,19 @@ export class BookingComponent implements OnInit {
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
     });
+    console.log(this.room_id);
+    
     
 
 
 console.log(this.bookingFormDetails);
-    this.editinfo() 
+if(this.room_id == undefined){
+  this.editinfo();
+}
   }
 
   editinfo(){
-    console.log(this.bookingFormDetails.meeting_id);
-    if(this.bookingFormDetails.meeting_id)
-{
+
       this.bookingForm.patchValue({meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
@@ -74,7 +76,7 @@ console.log(this.bookingFormDetails);
     //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
     //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
     //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
-    }
+    
   }
 
   minDate:any = "";
@@ -95,7 +97,6 @@ console.log(this.bookingFormDetails);
     this.minDate = year + "-" + month + "-" + toDate;
     // console.log(year)
   }
-  
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 
@@ -109,7 +110,7 @@ console.log(this.bookingFormDetails);
       (response: any) => {
         console.log(response, 'response');
         this.router.navigate(['/', 'dashboard']);
-        Swal.fire('Meeting booked  SUCCESSFULLYYYYY');
+        Swal.fire('Meeting Booked  Successfully');
       },
       (error: any) => {
         console.log(error);

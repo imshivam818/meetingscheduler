@@ -20,14 +20,42 @@ export class SignupComponent implements OnInit {
     this.signupform=this.fb.group({
       //now here we need to have two fields 
       email:['',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      password:['',[Validators.required,Validators.minLength(8)]],
+      password:['',[Validators.required,Validators.minLength(8),Validators.pattern('')]],
       cpassword:['',[Validators.required,Validators.minLength(8)]]
 
+    },
+    {
+      validators: this.MustMatch('password','cpassword')
     });
   }
   get signupformcontrol() {
     return this.signupform.controls;
   }
+
+  MustMatch(controlName:string, matchingControlName:string){
+    console.log("controlName",controlName);
+    console.log("matchingControlName", matchingControlName)
+    
+    return(formGroup:FormGroup) =>{
+      console.log(formGroup);
+      const control = formGroup.controls[controlName];
+      // console.log(control);
+      const matchingControl = formGroup.controls[matchingControlName];
+      // console.log(matchingControl);
+      if(matchingControl.errors && !matchingControl.errors['MustMatch']){
+        return
+      }
+      if(control.value!== matchingControl.value){
+
+        matchingControl.setErrors({MustMatch:true});
+      }
+      else
+      {
+        matchingControl.setErrors(null);
+      }
+    }
+  }
+
   submitForm(){
     const data =
      this.signupform.value;
@@ -46,17 +74,8 @@ export class SignupComponent implements OnInit {
         console.log(error);
         swal.fire("Please fill the INFO");
       },
-      // checkPasswords(password: string, cpassword: string) {
-      //   this.isConfirmPasswordDirty = true;
-      //   if (password == cpassword) {
-      //     this.passwordsMatching = true;
-      //     this.confirmPasswordClass = 'form-control is-valid';
-      //   } else {
-      //     this.passwordsMatching = false;
-      //     this.confirmPasswordClass = 'form-control is-invalid';
-      //   }
-    );
-  }
+    
+  )};
 
   
 
