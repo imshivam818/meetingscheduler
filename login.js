@@ -96,9 +96,6 @@ app.get('/details', function (request, response) {
 });
 // post api 
 app.post('/meetingdetails', function (request, response) {
-  // console.log(request.body);
-  // let meeting_id=request.body.meeting_id;
-  // let room_id = request.body.room_id;
   let room_id = request.body.room_id;
   let name = request.body.name;
   let start_time = request.body.start_time;

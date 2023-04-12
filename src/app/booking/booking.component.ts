@@ -69,11 +69,6 @@ console.log(this.bookingFormDetails);
         purpose:this.bookingFormDetails.purpose
 
       });
-    //   this.bookingForm.patchValue({name:this.bookingFormDetails.name});
-    //   this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time});
-    //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
-    //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
-    //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
     }
   }
 

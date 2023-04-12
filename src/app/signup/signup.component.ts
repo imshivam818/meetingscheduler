@@ -21,9 +21,9 @@ export class SignupComponent implements OnInit {
       //now here we need to have two fields 
       email:['',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password:['',[Validators.required,Validators.minLength(8)]],
-      cpassword:['',[Validators.required,Validators.minLength(8)]]
-
-    });
+     
+    }
+    );
   }
   get signupformcontrol() {
     return this.signupform.controls;
@@ -46,7 +46,9 @@ export class SignupComponent implements OnInit {
         console.log(error);
         swal.fire("Please fill the INFO");
       },
-   
     );
   }
+
+  
+
 }
