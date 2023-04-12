@@ -45,12 +45,9 @@ export class SignupComponent implements OnInit {
       (error: any) => {
         console.log(error);
         swal.fire("Please fill the INFO");
-      }
-
+      },
+   
     );
 
   }
-
-
-
 }

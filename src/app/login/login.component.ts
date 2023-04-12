@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginform = this.fb.group({
       email: ['', [Validators.required, Validators.email,Validators.pattern('')]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         console.log(response[0]);
         if (response[0].email == this.loginform.value.email) {
-          console.log(response[0], 'this is what');
+          console.log(response[0], 'this is what it s');
           // this.msg = 'User login successfully!';
           this.submitted = true;
           // swal.fire('Logged in SUCCESSFULLYYYYY');

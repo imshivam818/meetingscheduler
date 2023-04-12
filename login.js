@@ -9,8 +9,8 @@ const { log } = require("console");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Gopi@2406",
-  database: "meetingapp",
+  password: "Kum@r1999",
+  database: "bookingdetail",
   insecureAuth: true,
 });
 
@@ -65,10 +65,11 @@ app.post("/login", function (request, response) {
 app.post('/signup', function (request, response) {
   let email = request.body.email;
   let password = request.body.password;
-  
+  // let cpassword = request.body.cpassword;
+
 
   connection.query(
-    "insert into user(email,password) values(?,?,?)" [email, password],
+    "insert into user(email,password) values(?,?)", [email, password],
     function (error, result) {
       if (error) throw error;
       response.send(result);

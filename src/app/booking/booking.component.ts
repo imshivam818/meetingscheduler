@@ -43,7 +43,7 @@ export class BookingComponent implements OnInit {
       // meetingDetails: ['', [Validators.required]],
       meeting_id: ['',],
       room_id : [this.room_id],
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(10),Validators.pattern("^[A-Za-z][A-Za-z0-9_]{7,29}$")]],
       start_time: ['', [Validators.required]],
       end_time: ['', [Validators.required]],
       purpose: ['', [Validators.required]],
