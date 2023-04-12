@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import swal from 'sweetalert2';
-import { FormBuilder,FormGroup,Validators,PatternValidator} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -11,53 +11,46 @@ import { FormBuilder,FormGroup,Validators,PatternValidator} from '@angular/forms
 })
 
 export class SignupComponent implements OnInit {
-  signupform!:FormGroup;
+  signupform!: FormGroup;
   submitted = false;
   constructor(private apiService: ApiServiceService,
-            private router:Router,
-            private fb:FormBuilder) { }
-  ngOnInit(){
-    this.signupform=this.fb.group({
+    private router: Router,
+    private fb: FormBuilder) { }
+  ngOnInit() {
+    this.signupform = this.fb.group({
       //now here we need to have two fields 
-      email:['',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      password:['',[Validators.required,Validators.minLength(8)]],
-      cpassword:['',[Validators.required,Validators.minLength(8)]]
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+
 
     });
   }
   get signupformcontrol() {
     return this.signupform.controls;
   }
-  submitForm(){
+  submitForm() {
     const data =
-     this.signupform.value;
+      this.signupform.value;
     console.log('user data for signin', data);
     this.apiService.signup(data).subscribe(
-      (response:any) => {
-        console.log(response,"response")
-          this.router.navigate(['/','login']);
-          this.submitted=true;
-          if(this.signupform.invalid){
-            swal.fire('Form is invalid');
-          }
-          swal.fire('Signup Successfully')
+      (response: any) => {
+        console.log(response, "response")
+        this.router.navigate(['/', 'login']);
+        this.submitted = true;
+        if (this.signupform.invalid) {
+          swal.fire('Form is invalid');
+        }
+        swal.fire('Signup Successfully')
       },
       (error: any) => {
         console.log(error);
         swal.fire("Please fill the INFO");
-      },
-      // checkPasswords(password: string, cpassword: string) {
-      //   this.isConfirmPasswordDirty = true;
-      //   if (password == cpassword) {
-      //     this.passwordsMatching = true;
-      //     this.confirmPasswordClass = 'form-control is-valid';
-      //   } else {
-      //     this.passwordsMatching = false;
-      //     this.confirmPasswordClass = 'form-control is-invalid';
-      //   }
+      }
+
     );
+
   }
 
-  
+
 
 }

@@ -31,18 +31,8 @@
                       characters long.</div>
                   </span>
                 </div>
-                <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example4cg" class="required">Confirm Password</label>
-                  <input type="cpassword" class="form-control form-control-lg" formControlName="cpassword"
-                    id="cpassword" placeholder="Enter your Confirm Password" />
-                  <span class="text-danger" *ngIf="(signupformcontrol['cpassword'].touched || submitted) &&
-              signupformcontrol['cpassword'].invalid">
-                    <div *ngIf="signupformcontrol['cpassword'].errors?.['required']">Password is required.</div>
-                    <div *ngIf="signupformcontrol['cpassword'].errors?.['minlength']">Password must be at least 8
-                      characters long.</div>
-                  </span>
-                </div>
-                              -->
+               
+                        
                <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                   <label class="form-check-label" for="form2Example3g">
@@ -51,7 +41,7 @@
                 </div>
                 <div class="d-flex justify-content-center">
                   <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                    [disabled]="signupform.invalid">Register</button>
+                    >Register</button>
                 </div>
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a class="fw-bold text-body"
                     routerLink="/login"><u>Login here</u></a></p>
