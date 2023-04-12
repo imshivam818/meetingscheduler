@@ -1,4 +1,6 @@
-   <div class="container">
+   
+   <!-- <app-booking [fromParent]:meeting></app-booking> -->
+   <div *ngIf="!redirectBooking" class="container" >  
     <h2>Meeting Details</h2>
     <table class="table table-striped table-hover">
       <thead>
@@ -21,8 +23,9 @@
           <td>{{ meeting.start_time }}</td>
           <td>{{ meeting.end_time }}</td>
           <td>{{ meeting.meeting_date }}</td>
-          <td>
-            <button class="btn btn-danger" (click)="deletedetails(meeting.room_id)">Delete</button>
+          <td formaction="app-booking">
+            <button class="btn btn-danger" (click)="deletedetails(meeting.meeting_id)">Delete</button>
+            
             <button class="btn btn-primary" (click)="editMeeting(meeting)">Edit</button>
           </td>
         </tr>
@@ -30,5 +33,14 @@
       </tbody>
     </table>
   </div>
-  
+  <app-booking *ngIf="redirectBooking" [bookingFormDetails]="bookingData"></app-booking>
+
+
+
+
+
+
+ 
+
+    
  

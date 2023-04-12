@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
-// import { response } from 'express';
+import { response } from 'express';
 import { Router } from '@angular/router';
-// import { state } from '@angular/animations';
+import { state } from '@angular/animations';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 @Component({
   selector: 'app-meetinginfo',
@@ -10,9 +10,14 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
   styleUrls: ['./meetinginfo.component.css'],
 })
 export class MeetinginfoComponent implements OnInit {
+  [x: string]: any;
   public meetingDetails: any = [];
   public meeting_id: any = [];
-
+  public redirectBooking : boolean = false;
+  public bookingFormDetails : any;
+  public bookingData : any;
+ 
+  
   constructor(private apiservice: ApiServiceService, private router: Router) {}
   ngOnInit(): void {
     this.getalldetails();
@@ -23,11 +28,13 @@ export class MeetinginfoComponent implements OnInit {
       this.meetingDetails = response;
     });
   }
-  deletedetails(room_id: string) {
-    this.apiservice.deletemeeting(room_id).subscribe(
+  deletedetails(meeting_id: string) {
+    this.apiservice.deletemeeting(meeting_id).subscribe(
       (response: any) => {
-        window.alert(response);
-        // this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==room_id);
+        if(response){
+          window.alert("your meeting will be delete now")
+        }
+        // this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==meeting_id);
         this.getalldetails();
       },
       (error: any) => {
@@ -35,6 +42,8 @@ export class MeetinginfoComponent implements OnInit {
       }
     );
   }
+  
+  
   //   editMeeting(room_id:any){
   //     this.apiservice..subscribe(
   //       (response:any)=>{
@@ -63,8 +72,8 @@ export class MeetinginfoComponent implements OnInit {
   //   );
 
   editMeeting(meeting: any) {
-    console.log(meeting);
-    return
-    this.router.navigate(['/booking/:id'], meeting);
+    this.redirectBooking = true;
+    this.bookingData = meeting;
+    
   }
 }

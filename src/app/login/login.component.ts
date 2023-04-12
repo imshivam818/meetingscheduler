@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
-import swal from 'sweetalert2';
+ import swal from 'sweetalert2';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           console.log(response[0], 'this is what it s');
           // this.msg = 'User login successfully!';
           this.submitted = true;
-          swal.fire('Logged in SUCCESSFULLYYYYY');
+          // swal.fire('Logged in SUCCESSFULLYYYYY');
           //path to dashboard
           this.router.navigate(['/', 'dashboard']);
           localStorage.setItem('userId', response[0].id);
