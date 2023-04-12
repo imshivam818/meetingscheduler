@@ -46,18 +46,7 @@ export class SignupComponent implements OnInit {
         console.log(error);
         swal.fire("Please fill the INFO");
       },
-      // checkPasswords(password: string, cpassword: string) {
-      //   this.isConfirmPasswordDirty = true;
-      //   if (password == cpassword) {
-      //     this.passwordsMatching = true;
-      //     this.confirmPasswordClass = 'form-control is-valid';
-      //   } else {
-      //     this.passwordsMatching = false;
-      //     this.confirmPasswordClass = 'form-control is-invalid';
-      //   }
+   
     );
   }
-
-  
-
 }

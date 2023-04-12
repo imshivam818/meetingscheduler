@@ -65,11 +65,11 @@ app.post("/login", function (request, response) {
 app.post('/signup', function (request, response) {
   let email = request.body.email;
   let password = request.body.password;
-  let cpassword = request.body.cpassword;
+  // let cpassword = request.body.cpassword;
 
 
   connection.query(
-    "insert into user(email,password,cpassword) values(?,?,?)", [email, password, cpassword],
+    "insert into user(email,password) values(?,?)", [email, password],
     function (error, result) {
       if (error) throw error;
       response.send(result);

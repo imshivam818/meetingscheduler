@@ -26,11 +26,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginform = this.fb.group({
-      email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmedPassword: ['', Validators.required],
-    }, { 
-      validators: this.confirmedValidator('password', 'confirm_password')
     });
   }
 
@@ -45,7 +42,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         console.log(response[0]);
         if (response[0].email == this.loginform.value.email) {
-          console.log(response[0], 'this is what');
+          console.log(response[0], 'this is what it s');
           // this.msg = 'User login successfully!';
           this.submitted = true;
           // swal.fire('Logged in SUCCESSFULLYYYYY');
@@ -62,23 +59,4 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
-
-  confirmedValidator(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
-
-      if (matchingControl.errors && !matchingControl.errors['confirmedValidator']) {
-        return;
-      }
-
-      if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ confirmedValidator: true });
-      } else {
-        matchingControl.setErrors(null);
-      }
-    };
-  }
 }
-
