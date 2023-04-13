@@ -26,14 +26,14 @@ export class SignupComponent implements OnInit {
     },
     {
       //validators ka v small hona chaiye yha pe tbhi work krega  
-      validators: this.MustMatch('password','cpassword')
+      validators: this.mustMatch('password','cpassword')
     });
   }
   get signupformcontrol() {
     return this.signupform.controls;
   }
 
-  MustMatch(controlName:string, matchingControlName:string){
+  mustMatch(controlName:string, matchingControlName:string){
     console.log("controlName",controlName);
     console.log("matchingControlName", matchingControlName)
     
@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
       }
       if(control.value!== matchingControl.value){
 
-        matchingControl.setErrors({MustMatch:true});
+        matchingControl.setErrors({mustMatch:true});
       }
       else
       {
