@@ -26,12 +26,37 @@ export class SignupComponent implements OnInit {
     },
     {
       //validators ka v small hona chaiye yha pe tbhi work krega  
-      validators: this.MustMatch('password','cpassword')
+      validators: this.mustMatch('password','cpassword')
     });
   }
   get signupformcontrol() {
     return this.signupform.controls;
   }
+
+  mustMatch(controlName:string, matchingControlName:string){
+    console.log("controlName",controlName);
+    console.log("matchingControlName", matchingControlName)
+    
+    return(formGroup:FormGroup) =>{
+      console.log(formGroup);
+      const control = formGroup.controls[controlName];
+      // console.log(control);
+      const matchingControl = formGroup.controls[matchingControlName];
+      // console.log(matchingControl);
+      if(matchingControl.errors && !matchingControl.errors['MustMatch']){
+        return
+      }
+      if(control.value!== matchingControl.value){
+
+        matchingControl.setErrors({mustMatch:true});
+      }
+      else
+      {
+        matchingControl.setErrors(null);
+      }
+    }
+  }
+
   submitForm(){
     const data =
      this.signupform.value;

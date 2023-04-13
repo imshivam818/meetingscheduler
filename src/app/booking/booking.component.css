@@ -132,4 +132,10 @@
 	width: 100%;
 	display: block;
 	letter-spacing: 0.4px;
+
+
+}
+
+.booking-form .submit-btn:hover {
+	background-color: red;
 }

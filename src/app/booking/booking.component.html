@@ -84,14 +84,14 @@
               <div class="text-center">
 
 
-                <button class="btn btn-success" type="submit" [disabled]="bookingForm.invalid">
+                <button class="submit-btn" type="submit" [disabled]="bookingForm.invalid">
                   {{buttonName}}</button>
                 <!-- <button class="submit-btn" type="reset">
                 Cancle</button> -->
 
 
 
-                <button type="button" class="btn btn-danger" (click)="oncancel()">Cancel</button>
+                <button type="reset" class="icon-danger" (click)="oncancel()">X</button>
               </div>
             
             </form>
