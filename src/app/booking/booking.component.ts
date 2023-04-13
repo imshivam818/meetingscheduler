@@ -3,6 +3,7 @@ import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 // import { DialogRef, DIALOG_DATA } from '@angular/core';
 @Component({
   selector: 'app-booking',
@@ -16,13 +17,15 @@ export class BookingComponent implements OnInit {
 
 
   @Input() bookingFormDetails: any;
+  public datePipe = new DatePipe('en-Us');
+  public buttonName = ''
   
 
 
   // room_id:any= this.route.snapshot.params['room_id'];
   // meetingDetails: any=this.route.snapshot.params['meeting'];
   //varibles always in camel case;
-  buttonText:string="submit";
+
   userId: any = localStorage.getItem('userId');
   //array banyaa
   // public bookingdetails:any=[];
@@ -33,13 +36,14 @@ export class BookingComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
+    public datepipe: DatePipe
 
     // @Inject(DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
     this.getDate();
-    this.buttonText="Submit";
+
     this.room_id=this.route.snapshot.params['id'];
     this.bookingForm = this.fb.group({
       // meetingDetails: ['', [Validators.required]],
@@ -57,29 +61,40 @@ export class BookingComponent implements OnInit {
   }
   chaneButtonData(){
     
-  }
-  oncancel(){
-    this.bookingForm.reset;
-    this.buttonText="submit";
-    this.submitted=false;
-    this.router.navigate(['/', 'dashboard']);
     
+
+
+console.log(this.bookingFormDetails);
+if(this.room_id == undefined){
+  this.editinfo();
+}
   }
 
   editinfo(){
-    this.buttonText="update";
-    console.log(this.bookingFormDetails.meeting_id);
-    if(this.bookingFormDetails.meeting_id)
-    {
+// console.log(this.formatDateAndTime(this.bookingFormDetails.meeting_date));
+
       this.bookingForm.patchValue({meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
         end_time:this.bookingFormDetails.end_time,
-        meeting_date:this.bookingFormDetails.meeting_date,
+        meeting_date: this.formatDateAndTime(this.bookingFormDetails.meeting_date)  ,
         purpose:this.bookingFormDetails.purpose
       });
-    }
+    //   this.bookingForm.patchValue({name:this.bookingFormDetails.name});
+    //   this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time});
+    //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
+    //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
+    //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
+    
   }
+  formatDateAndTime(date:any) {
+     let newDate = new Date(date)
+     let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
+     let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
+     let Year = newDate.getFullYear()    
+    return `${Year}-${Month}-${currentDate}`
+   }
+
   minDate:any = "";
   getDate(){
 
@@ -104,10 +119,18 @@ export class BookingComponent implements OnInit {
     return this.bookingForm.controls;
   }
 
+  oncancel(){
+    this.bookingForm.reset;
+    this.buttonName="submit";
+    this.router.navigate(['/','dashboard']);
+  }
+  
 
   booking() { 
     // alert("@#$%^");
     const data = this.bookingForm.value;
+    console.log(data)
+    
     console.log('user data for meetingdetails', data);
     this.apiService.meetingdetails(data).subscribe(
       (response: any) => {

@@ -20,9 +20,19 @@ export class SignupComponent implements OnInit {
     this.signupform=this.fb.group({
       //now here we need to have two fields 
       email:['',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+<<<<<<< HEAD
       password:['',[Validators.required,Validators.minLength(8)]],
       cpassword:['',[Validators.required,Validators.minLength(8)]]
 
+=======
+      password:['',[Validators.required,Validators.minLength(8),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
+      cpassword:['',[Validators.required,Validators.minLength(8)]]
+
+    },
+    {
+      //validators ka v small hona chaiye yha pe tbhi work krega  
+      validators: this.MustMatch('password','cpassword')
+>>>>>>> ecd96c26077c8db5a7ba71c6082622a1f549ac73
     });
   }
   get signupformcontrol() {

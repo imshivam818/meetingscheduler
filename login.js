@@ -96,6 +96,9 @@ app.get('/details', function (request, response) {
 });
 // post api 
 app.post('/meetingdetails', function (request, response) {
+  // console.log(request.body);
+  let meeting_id = request.body.meeting_id;
+  // let room_id = request.body.room_id;
   let room_id = request.body.room_id;
   let name = request.body.name;
   let start_time = request.body.start_time;
@@ -103,18 +106,30 @@ app.post('/meetingdetails', function (request, response) {
   let meeting_date = request.body.meeting_date;
   let purpose = request.body.purpose;
   let userId = request.body.userId;
+
   console.log(userId);
+  if (meeting_id == '') {
+    connection.query(
+      `INSERT INTO meeting_details(room_id,name,start_time,end_time,meeting_date,purpose,userId) values("${room_id}","${name}","${start_time}","${end_time}","${meeting_date}","${purpose}","${userId}")`,
+      function (error, result) {
+        // console.log("result", result);
+        // console.log("error", error);
+        if (error) throw error;
+        response.send(result);
 
-  connection.query(
-    `INSERT INTO meeting_details(room_id,name,start_time,end_time,meeting_date,purpose,userId) values("${room_id}","${name}","${start_time}","${end_time}","${meeting_date}","${purpose}","${userId}")`,
-    function (error, result) {
-      // console.log("result", result);
-      // console.log("error", error);
-      if (error) throw error;
-      response.send(result);
-
-    }
-  )
+      }
+    )
+  } else {
+    connection.query(
+      `UPDATE meeting_details SET name=?,start_time=?,end_time=?,meeting_date=?,purpose=? WHERE meeting_id=?`,
+      [name, start_time, end_time, meeting_date, purpose, meeting_id],
+      //`UPDATE meeting_details SET name = '${name}', start_time = '${start_time}', end_time = '${end_time}', meeting_date = '${meeting_date}', purpose = '${purpose}' WHERE room_id = '${room_id}'`,
+      function (error, result) {
+        if (error) throw error;
+        response.send(result);
+      }
+    )
+  }
 });
 
 // delete api
