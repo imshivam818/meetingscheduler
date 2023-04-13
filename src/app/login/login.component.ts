@@ -45,11 +45,7 @@ export class LoginComponent implements OnInit {
           console.log(response[0], 'this is what it s');
           // this.msg = 'User login successfully!';
           this.submitted = true;
-<<<<<<< HEAD
-          // swal.fire('Logged in SUCCESSFULLYYYYY');
-=======
           // swal.fire('Logged in Sucessfully');
->>>>>>> ecd96c26077c8db5a7ba71c6082622a1f549ac73
           //path to dashboard
           this.router.navigate(['/', 'dashboard']);
           localStorage.setItem('userId', response[0].id);

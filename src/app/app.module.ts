@@ -14,12 +14,8 @@ import { BookingComponent } from './booking/booking.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MeetinginfoComponent } from './meetinginfo/meetinginfo.component';
-<<<<<<< HEAD
-
-=======
 import { EditBookingformComponent } from './edit-bookingform/edit-bookingform.component';
 import { DatePipe } from '@angular/common';
->>>>>>> ecd96c26077c8db5a7ba71c6082622a1f549ac73
 @NgModule({
   declarations: [
     AppComponent,
