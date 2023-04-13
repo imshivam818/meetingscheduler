@@ -119,6 +119,12 @@ else{
 
   }
 
+  oncancel(){
+    this.bookingForm.reset;
+    this.buttonName="submit";
+    this.router.navigate(['/','dashboard']);
+  
+  }
 
   booking() { 
     const data = this.bookingForm.value;
