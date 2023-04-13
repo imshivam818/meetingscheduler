@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit, inject } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-booking',
@@ -14,7 +14,10 @@ export class BookingComponent implements OnInit {
   submitted = false;
   room_id:string='';
   @Input() bookingFormDetails: any;
-  
+
+
+
+
 
 
   // room_id:any= this.route.snapshot.params['room_id'];
@@ -25,7 +28,7 @@ export class BookingComponent implements OnInit {
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
- 
+
   constructor(
     private apiService: ApiServiceService,
     private router: Router,
@@ -50,11 +53,11 @@ export class BookingComponent implements OnInit {
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
     });
-    
+
 
 
 console.log(this.bookingFormDetails);
-    this.editinfo() 
+    this.editinfo()
   }
 
   editinfo(){
@@ -65,17 +68,20 @@ console.log(this.bookingFormDetails);
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
         end_time:this.bookingFormDetails.end_time,
-        meeting_date: this.minDate,
+        meeting_date: this.bookingFormDetails.meeting_date,
         purpose:this.bookingFormDetails.purpose
 
       });
-    
+
     }
   }
 
+  
+
+
   minDate:any = "";
   getDate(){
-    var date:any = new Date(); 
+    var date:any = new Date();
     // console.log(date)
     var toDate:any = date.getDate();
     // console.log(toDate);
@@ -91,14 +97,17 @@ console.log(this.bookingFormDetails);
     this.minDate = year + "-" + month + "-" + toDate;
     // console.log(year)
   }
-  
+
+
+
+
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 
   }
 
 
-  booking() { 
+  booking() {
     const data = this.bookingForm.value;
     console.log('user data for meetingdetails', data);
     this.apiService.meetingdetails(data).subscribe(
@@ -113,4 +122,6 @@ console.log(this.bookingFormDetails);
       }
     );
   }
+
+
 }
