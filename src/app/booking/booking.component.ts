@@ -2,8 +2,9 @@ import { Component, Inject, Input, OnInit, inject } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+// import { DialogRef, DIALOG_DATA } from '@angular/core';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -14,9 +15,8 @@ export class BookingComponent implements OnInit {
   submitted = false;
   room_id:string='';
   @Input() bookingFormDetails: any;
-
-
-
+  public datePipe = new DatePipe('en-Us');
+  public buttonName = ''
 
 
 
@@ -34,6 +34,7 @@ export class BookingComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
+    public datepipe: DatePipe
 
     // @Inject(DIALOG_DATA) public data: any
   ) {}
@@ -53,30 +54,49 @@ export class BookingComponent implements OnInit {
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
     });
+    console.log(this.room_id);
+
 
 
 
 console.log(this.bookingFormDetails);
-    this.editinfo()
+if(this.room_id == undefined){
+  this.buttonName = 'Update'
+
+  this.editinfo();
+}
+else{
+  this.buttonName = 'Submit'
+}
   }
 
   editinfo(){
-    console.log(this.bookingFormDetails.meeting_id);
-    if(this.bookingFormDetails.meeting_id)
-{
+// console.log(this.formatDateAndTime(this.bookingFormDetails.meeting_date));
+
       this.bookingForm.patchValue({meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
         end_time:this.bookingFormDetails.end_time,
-        meeting_date: this.bookingFormDetails.meeting_date,
+        meeting_date: this.formatDateAndTime(this.bookingFormDetails.meeting_date)  ,
         purpose:this.bookingFormDetails.purpose
 
       });
+    //   this.bookingForm.patchValue({name:this.bookingFormDetails.name});
+    //   this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time});
+    //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
+    //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
+    //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
 
-    }
   }
+  formatDateAndTime(date:any) {
+     let newDate = new Date(date)
+     let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
+     let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
+     let Year = newDate.getFullYear()
+    return `${Year}-${Month}-${currentDate}`
+   }
 
-  
+
 
 
   minDate:any = "";
@@ -97,24 +117,28 @@ console.log(this.bookingFormDetails);
     this.minDate = year + "-" + month + "-" + toDate;
     // console.log(year)
   }
-
-
-
-
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 
   }
 
+  oncancel(){
+    this.bookingForm.reset;
+    this.buttonName="submit";
+    this.router.navigate(['/','dashboard']);
+
+  }
 
   booking() {
     const data = this.bookingForm.value;
+    console.log(data)
+
     console.log('user data for meetingdetails', data);
     this.apiService.meetingdetails(data).subscribe(
       (response: any) => {
         console.log(response, 'response');
         this.router.navigate(['/', 'dashboard']);
-        Swal.fire('Meeting booked  SUCCESSFULLYYYYY');
+        Swal.fire('Meeting Booked  Successfully');
       },
       (error: any) => {
         console.log(error);

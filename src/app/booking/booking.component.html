@@ -73,7 +73,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <span class="form-label">Meeting purpose</span>
-                    <input class="form-control" type="text" placeholder="Enter Your purpose"
+                    <input class=" form-control" type="text" placeholder="Enter Your purpose"
                       formControlName="purpose" />
                     <span class="text-danger"
                       *ngIf="(bookingFormcontrols['purpose'].touched||submitted)&& bookingFormcontrols['purpose'].invalid">
@@ -82,10 +82,17 @@
                   </div>
                 </div>
               </div>
-              <button class="submit-btn" type="submit" [disabled]="bookingForm.invalid">
-                Submit</button>
-              <div class="form-btn">
-                <!-- <button class="submit-btn">submit</button> -->
+              <div class="text-center">
+
+
+                <button class="btn btn-success" type="submit" [disabled]="bookingForm.invalid">
+                  {{buttonName}}</button>
+                <!-- <button class="submit-btn" type="reset">
+                Cancle</button> -->
+
+
+
+                <button type="button" class="btn btn-danger" (click)="oncancel()">Cancel</button>
               </div>
             </form>
           </div>
