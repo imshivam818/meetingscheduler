@@ -81,11 +81,13 @@
                   </div>
                 </div>
               </div>
-              <button class="submit-btn" type="submit" [disabled]="bookingForm.invalid">
-                Submit</button>
-              <div class="form-btn">
-                <!-- <button class="submit-btn">submit</button> -->
+             
+              <div class="text-center">
+                <button type="button" class="btn btn-success">{{buttonText}}</button>
+  
+    <button type="button" class="btn btn-danger" (click)="oncancel()">Cancel</button>
               </div>
+            
             </form>
           </div>
         </div>

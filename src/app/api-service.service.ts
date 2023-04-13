@@ -42,5 +42,6 @@ export class ApiServiceService {
   editMeetingDetails(room_id:string,meetingDetails:any){
     return this.http.put(`http://localhost:3000/details/${room_id}`,meetingDetails);
   } 
+  
 }
 

@@ -17,7 +17,8 @@
                   <span class="text-danger"
                     *ngIf="(signupformcontrol['email'].touched||submitted)&& signupformcontrol['email'].invalid">
                     <div *ngIf="signupformcontrol['email'].errors?.['required']">Email is required.</div>
-                    <div *ngIf="signupformcontrol['email'].errors?.['email']">Email must be a valid email address.</div>
+                    <div *ngIf="signupformcontrol['email'].errors?.['email.valid']">Email must be a valid email address.
+                    </div>
                   </span>
                 </div>
                 <div class="form-outline mb-4">
@@ -34,29 +35,19 @@
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example4cg" class="required">Confirm Password</label>
                   <input type="cpassword" class="form-control form-control-lg" formControlName="cpassword"
-                    id="cpassword" placeholder="Enter your Confirm Password" />
+                    id="cpassword" placeholder="Enter your Confirm Password">
                   <span class="text-danger" *ngIf="(signupformcontrol['cpassword'].touched || submitted) &&
               signupformcontrol['cpassword'].invalid">
                     <div *ngIf="signupformcontrol['cpassword'].errors?.['required']">Password is required.</div>
                     <div *ngIf="signupformcontrol['cpassword'].errors?.['minlength']">Password must be at least 8
                       characters long.</div>
+                    <div *ngIf="signupformcontrol['cpassword'].errors?.['MustMatch']">Confirm
+                      password didn't match
+
+                    </div>
                   </span>
                 </div>
-                <!-- <div class="form-outline mb-4">
-                  <label class="form-label"  for="form3Example4cg" class="required">Confirm Password</label>
-                <input type="password"  class="form-control form-control-lg"
-               formControlName="confirmpassword"
-              id="confirmpassword"
-              placeholder="Repeat your password"
-              />
-              <span class="text-danger" *ngIf="(signupformcontrol['confirm password']) &&
-              signupformcontrol['conform password'].invalid">
-              <div *ngIf="signupformcontrol['confirm password'].errors?.['required']">Repeat password required.</div>
-              <div *ngIf="signupformcontrol['confirm password'].errors?.['minlength']">confirm Password must be at least 8 characters long.</div>
-              
-                </span>
-              </div>                 -->
-               <div class="form-check d-flex justify-content-center mb-5">
+                <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                   <label class="form-check-label" for="form2Example3g">
                     I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
