@@ -14,8 +14,9 @@ export class BookingComponent implements OnInit {
   bookingForm!: FormGroup;
   submitted = false;
   room_id:string='';
-
-
+ 
+ 
+ 
   @Input() bookingFormDetails: any;
   public datePipe = new DatePipe('en-Us');
   public buttonName = ''
@@ -56,19 +57,18 @@ export class BookingComponent implements OnInit {
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
     });
-    this.editinfo(); 
-    this.chaneButtonData()
-  }
-  chaneButtonData(){
-    
     
 
-
-console.log(this.bookingFormDetails);
+  
+  console.log(this.bookingFormDetails);
 if(this.room_id == undefined){
+  this.buttonName='Update'
   this.editinfo();
+}else{
+  this.buttonName= 'submit'
 }
   }
+ 
 
   editinfo(){
 
