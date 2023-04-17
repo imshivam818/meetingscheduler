@@ -3,6 +3,8 @@ import { ApiServiceService } from '../api-service.service';
 import { response } from 'express';
 import { Router } from '@angular/router';
 import { state } from '@angular/animations';
+import Swal from 'sweetalert2';
+
 import { DashboardComponent } from '../dashboard/dashboard.component';
 @Component({
   selector: 'app-meetinginfo',
@@ -21,6 +23,7 @@ export class MeetinginfoComponent implements OnInit {
   constructor(private apiservice: ApiServiceService, private router: Router) {}
   ngOnInit(): void {
     this.getalldetails();
+    
   }
   getalldetails() {
     this.apiservice.getalldata().subscribe((response: any) => {
@@ -32,7 +35,7 @@ export class MeetinginfoComponent implements OnInit {
     this.apiservice.deletemeeting(meeting_id).subscribe(
       (response: any) => {
         if(response){
-          window.alert("Deleted  details confirm")
+          Swal.fire('Deleted successfully');
         }
         // this.meetingDetails=this.meetingDetails.filter((meeting:any)=>meeting.meeting_id!==meeting_id);
         this.getalldetails();
@@ -42,6 +45,7 @@ export class MeetinginfoComponent implements OnInit {
       }
     );
   }
+
   
   
     // editMeeting(room_id:any){
@@ -75,7 +79,12 @@ export class MeetinginfoComponent implements OnInit {
     this.redirectBooking = true;
     this.bookingData = meeting;
     
-
-    
+  }
+  formatDateAndTime(date:any) {
+    let newDate = new Date(date)
+    let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
+    let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
+    let Year = newDate.getFullYear()    
+   return `${Year}-${Month}-${currentDate}`
   }
 }

@@ -115,7 +115,7 @@ app.post('/meetingdetails', function (request, response) {
         // console.log("result", result);
         // console.log("error", error);
         if (error) throw error;
-        response.send(result);
+        response.send(JSON.stringify({ "result": "Meeting booked successfully" }));
 
       }
     )
@@ -126,7 +126,7 @@ app.post('/meetingdetails', function (request, response) {
       //`UPDATE meeting_details SET name = '${name}', start_time = '${start_time}', end_time = '${end_time}', meeting_date = '${meeting_date}', purpose = '${purpose}' WHERE room_id = '${room_id}'`,
       function (error, result) {
         if (error) throw error;
-        response.send(result);
+        response.send(JSON.stringify({ "result": "Meeting updated successfully" }));
       }
     )
   }

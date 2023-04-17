@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { response } from 'express';
 // import { DialogRef, DIALOG_DATA } from '@angular/core';
 @Component({
   selector: 'app-booking',
@@ -25,6 +26,7 @@ export class BookingComponent implements OnInit {
   //varibles always in camel case;
 
   userId: any = localStorage.getItem('userId');
+  public showListing : boolean = false
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
@@ -55,25 +57,20 @@ export class BookingComponent implements OnInit {
       userId:[this.userId],
     });
     console.log(this.room_id);
-    
-    
-
-
 console.log(this.bookingFormDetails);
 if(this.room_id == undefined){
   this.buttonName = 'Update'
-
   this.editinfo();
 }
 else{
   this.buttonName = 'Submit'
 }
   }
-
   editinfo(){
 // console.log(this.formatDateAndTime(this.bookingFormDetails.meeting_date));
 
-      this.bookingForm.patchValue({meeting_id:this.bookingFormDetails.meeting_id,
+      this.bookingForm.patchValue({
+        meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
         end_time:this.bookingFormDetails.end_time,
@@ -125,22 +122,43 @@ else{
     this.router.navigate(['/','dashboard']);
   
   }
-
   booking() { 
     const data = this.bookingForm.value;
     console.log(data)
-    
     console.log('user data for meetingdetails', data);
-    this.apiService.meetingdetails(data).subscribe(
-      (response: any) => {
-        console.log(response, 'response');
-        this.router.navigate(['/', 'dashboard']);
-        Swal.fire('Meeting Booked  Successfully');
-      },
-      (error: any) => {
-        console.log(error);
-        Swal.fire('Error Occured');
-      }
-    );
+    if(this.bookingForm.valid){
+    // if(data.meeting_id){
+      this.apiService.meetingdetails(data).subscribe(
+        (response:any) => {
+          // console.log(response,'response');
+          console.log(response)
+          Swal.fire(response.result);
+          if(response.result == 'Meeting booked successfully'){
+            Swal.fire(response.result);
+            this.router.navigate(['/', 'dashboard']);        
+          } else{
+            Swal.fire(response.result);
+            this.showListing = true;
+
+          }
+        }
+      )
+    // }
+    // else
+     
+    // {
+    // this.apiService.meetingdetails(data).subscribe(
+    //   (response: any) => {
+    //     console.log(response, 'response');
+    //     this.router.navigate(['/', 'dashboard']);
+    //     Swal.fire('Meeting Booked  Successfully');        
+    //   },
+    //   (error: any) => {
+    //     console.log(error);
+    //     Swal.fire('Error Occured');
+    //   }
+    // );
+    // }
+  }
   }
 }

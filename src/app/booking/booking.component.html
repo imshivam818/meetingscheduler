@@ -1,106 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Booking Form HTML Template</title>
-</head>
-
-<body>
-  <div id="booking" class="section">
-    <div class="section-center">
-      <div class="container">
-        <div class="row">
-          <div class="booking-form">
-            <div class="form-header">
-              <h1>Create your Meeting</h1>
-            </div>
-            <form [formGroup]="bookingForm" (ngSubmit)="booking()">
-              <!-- <div class="form-group">
+<div *ngIf="!showListing" id="booking" class="section">
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="booking-form">
+          <div class="form-header">
+            <h1>Create your Meeting</h1>
+          </div>
+          <form [formGroup]="bookingForm" (ngSubmit)="booking()">
+            <!-- <div class="form-group">
                   <span class="form-label">Room id</span>
                   <input class="form-control"
 				  formControlName="room_id"
 				  />
                 </div> -->
-              <div class="form-group">
-                <span class="form-label">Name</span>
-                <input class="form-control" type="text" placeholder="Enter Your name" formControlName="name" required />
-                <span class="text-danger"
-                  *ngIf="(bookingFormcontrols['name'].touched||submitted)&& bookingFormcontrols['name'].invalid">
-                  <div *ngIf="bookingFormcontrols['name'].errors?.['required']">Name is required.</div>
-                </span>
+            <div class="form-group">
+              <label class="form-label" class="required">Name</label>
+              <input class="form-control" type="text" placeholder="Enter Your name" formControlName="name" required />
+              <span class="text-danger"
+                *ngIf="(bookingFormcontrols['name'].touched||submitted)&& bookingFormcontrols['name'].invalid">
+                <div *ngIf="bookingFormcontrols['name'].errors?.['required']">Name is required.</div>
+              </span>
 
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <span class="form-label">Start-time</span>
-                    <input class="form-control" type="time" formControlName="start_time">
-                    <span class="text-danger"
-                      *ngIf="(bookingFormcontrols['start_time'].touched||submitted)&& bookingFormcontrols['start_time'].invalid">
-                      <div *ngIf="bookingFormcontrols['start_time'].errors?.['required']">Start time is required.</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label" class="required">Meeting day</label>
+                  <input class="form-control" type="date" formControlName="meeting_date" min="{{minDate}}">
+                  <span class="text-danger"
+                    *ngIf="(bookingFormcontrols['meeting_date'].touched||submitted)&& bookingFormcontrols['meeting_date'].invalid">
+                    <div *ngIf="bookingFormcontrols['meeting_date'].errors?.['required']">Meeting date is required.
+                    </div>
 
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-label">End-time</label>
-                    <input class="form-control" type="time" formControlName="end_time">
-                    <span class="text-danger"
-                      *ngIf="(bookingFormcontrols['end_time'].touched||submitted)&& bookingFormcontrols['end_time'].invalid">
-                      <div *ngIf="bookingFormcontrols['end_time'].errors?.['required']">End time is required.</div>
-
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <span class="form-label">Meeting day</span>
-                    <input class="form-control" type="date" formControlName="meeting_date" min="{{minDate}}">
-                    <span class="text-danger"
-                      *ngIf="(bookingFormcontrols['meeting_date'].touched||submitted)&& bookingFormcontrols['meeting_date'].invalid">
-                      <div *ngIf="bookingFormcontrols['meeting_date'].errors?.['required']">Meeting date is required.
-                      </div>
-
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <span class="form-label">Meeting purpose</span>
-                    <input class=" form-control" type="text" placeholder="Enter Your purpose"
-                      formControlName="purpose" />
-                    <span class="text-danger"
-                      *ngIf="(bookingFormcontrols['purpose'].touched||submitted)&& bookingFormcontrols['purpose'].invalid">
-                      <div *ngIf="bookingFormcontrols['purpose'].errors?.['required']">Purpose is required.</div>
-                    </span>
-                  </div>
+                  </span>
                 </div>
               </div>
-              <div class="text-center">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label" class="required">Start-time</label>
+                  <input class="form-control" type="time" formControlName="start_time">
+                  <span class="text-danger"
+                    *ngIf="(bookingFormcontrols['start_time'].touched||submitted)&& bookingFormcontrols['start_time'].invalid">
+                    <div *ngIf="bookingFormcontrols['start_time'].errors?.['required']">Start time is required.</div>
+
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label" class="required">End-time</label>
+                  <input class="form-control" type="time" formControlName="end_time">
+                  <span class="text-danger"
+                    *ngIf="(bookingFormcontrols['end_time'].touched||submitted)&& bookingFormcontrols['end_time'].invalid">
+                    <div *ngIf="bookingFormcontrols['end_time'].errors?.['required']">End time is required.</div>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label" class="required">Meeting purpose</label>
+                  <input class=" form-control" type="text" placeholder="Enter Your purpose" formControlName="purpose" />
+                  <span class="text-danger"
+                    *ngIf="(bookingFormcontrols['purpose'].touched||submitted)&& bookingFormcontrols['purpose'].invalid">
+                    <div *ngIf="bookingFormcontrols['purpose'].errors?.['required']">Purpose is required.</div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
 
 
-                <button class="submit-btn" type="submit" [disabled]="bookingForm.invalid">
-                  {{buttonName}}</button>
-                <!-- <button class="submit-btn" type="reset">
+              <button class="btn btn-success" style="background-color: green" type="submit"
+                [disabled]="bookingForm.invalid">
+                {{buttonName}}</button>
+              <!-- <button class="submit-btn" type="reset">
                 Cancle</button> -->
 
 
 
-                <button type="reset" class="icon-danger" (click)="oncancel()">X</button>
-              </div>
-            </form>
-          </div>
+              <button type="button" style="background-color: red" class="btn btn-danger"
+                (click)="oncancel()">Cancel</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</body>
+</div>
 
-</html>
+<app-meetinginfo *ngIf="showListing"></app-meetinginfo>
 
 <!-- hi i am pushing this -->
