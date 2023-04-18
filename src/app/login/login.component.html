@@ -15,7 +15,7 @@
           </div>
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example3">Email</label>
+            <label class="form-label" for="form3Example3" class="required">Email</label>
             <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your email"
               formControlName="email" />
 
@@ -23,7 +23,7 @@
           <span class="text-danger"
             *ngIf="(loginformcontrols['email'].touched||submitted)&& loginformcontrols['email'].invalid">
             <div *ngIf="loginformcontrols['email'].errors?.['required']">Email is required.</div>
-            <div *ngIf="loginformcontrols['email'].errors?.['email']">Email must be a valid email address.</div>
+            <div *ngIf="loginformcontrols['email'].errors?.['email']">Please enter correct email.</div>
           </span>
           <!-- Password input -->
           <div class="form-outline mb-3">
@@ -34,6 +34,7 @@
           <span class="text-danger" *ngIf="(loginformcontrols['password'].touched || submitted) &&
             loginformcontrols['password'].invalid">
             <div *ngIf="loginformcontrols['password'].errors?.['required']">Password is required.</div>
+            <div *ngIf="loginformcontrols['password'].errors?.['valid']">Password is invalid.</div>
             <div *ngIf="loginformcontrols['password'].errors?.['minlength']">Password must be at least 8 characters
               long.</div>
           </span>

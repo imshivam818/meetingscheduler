@@ -4,8 +4,6 @@ const session = require("express-session");
 var cors = require("cors");
 const path = require("path");
 const { log } = require("console");
-
-
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -13,9 +11,6 @@ const connection = mysql.createConnection({
   database: "bookingdetail",
   insecureAuth: true,
 });
-
-
-
 const app = express();
 app.use(
   session({
@@ -35,9 +30,6 @@ app.use(cors());
 app.get("/", function (request, response) {
   response.send("login page");
 });
-
-
-
 app.post("/login", function (request, response) {
   let email = request.body.email;
   let password = request.body.password;
@@ -66,8 +58,6 @@ app.post('/signup', function (request, response) {
   let email = request.body.email;
   let password = request.body.password;
   let cpassword = request.body.cpassword;
-
-
   connection.query(
     "insert into user(email,password) values(?,?)", [email, password],
     function (error, result) {

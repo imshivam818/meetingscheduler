@@ -80,11 +80,4 @@ export class MeetinginfoComponent implements OnInit {
     this.bookingData = meeting;
     
   }
-  formatDateAndTime(date:any) {
-    let newDate = new Date(date)
-    let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
-    let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
-    let Year = newDate.getFullYear()    
-   return `${Year}-${Month}-${currentDate}`
-  }
 }

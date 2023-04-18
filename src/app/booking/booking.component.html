@@ -4,7 +4,8 @@
       <div class="row">
         <div class="booking-form">
           <div class="form-header">
-            <h1>Create your Meeting</h1>
+            <h1>{{heading}}</h1>
+
           </div>
           <form [formGroup]="bookingForm" (ngSubmit)="booking()">
             <!-- <div class="form-group">
@@ -90,5 +91,6 @@
 </div>
 
 <app-meetinginfo *ngIf="showListing"></app-meetinginfo>
+
 
 <!-- hi i am pushing this -->

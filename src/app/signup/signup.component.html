@@ -16,8 +16,10 @@
 
                   <span class="text-danger"
                     *ngIf="(signupformcontrol['email'].touched||submitted)&& signupformcontrol['email'].invalid">
+                    <!-- <div *ngIf="signupformcontrol['email'].errors?.['invalid']">Email is invalid.</div> -->
+
                     <div *ngIf="signupformcontrol['email'].errors?.['required']">Email is required.</div>
-                    <div *ngIf="signupformcontrol['email'].errors?.['email.valid']">Email must be a valid email address.
+                    <div *ngIf="signupformcontrol['email'].errors?.['pattern']">Email is invalid.
                     </div>
                   </span>
                 </div>
@@ -28,21 +30,20 @@
                   <span class="text-danger" *ngIf="(signupformcontrol['password'].touched || submitted) &&
                 signupformcontrol['password'].invalid">
                     <div *ngIf="signupformcontrol['password'].errors?.['required']">Password is required.</div>
+                    <div *ngIf="signupformcontrol['password'].errors?.['pattern']">Password is too weak</div>
                     <div *ngIf="signupformcontrol['password'].errors?.['minlength']">Password must be at least 8
                       characters long.</div>
                   </span>
                 </div>
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example4cg" class="required">Confirm Password</label>
-                  <input type="cpassword" class="form-control form-control-lg" formControlName="cpassword"
-                    id="cpassword" placeholder="Enter your Confirm Password">
+                  <input type="password" class="form-control form-control-lg" formControlName="cpassword" id="cpassword"
+                    placeholder="Enter your Confirm Password">
                   <span class="text-danger" *ngIf="(signupformcontrol['cpassword'].touched || submitted) &&
               signupformcontrol['cpassword'].invalid">
                     <div *ngIf="signupformcontrol['cpassword'].errors?.['required']">Password is required.</div>
-                    <div *ngIf="signupformcontrol['cpassword'].errors?.['minlength']">Password must be at least 8
-                      characters long.</div>
                     <div *ngIf="signupformcontrol['cpassword'].errors?.['mustMatch']">Confirm
-                      password didn't match
+                      password didn't match.
 
                     </div>
                   </span>

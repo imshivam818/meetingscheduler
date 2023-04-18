@@ -27,6 +27,7 @@ export class BookingComponent implements OnInit {
 
   userId: any = localStorage.getItem('userId');
   public showListing : boolean = false
+  public heading = "Create your Meeting"
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
@@ -68,7 +69,7 @@ else{
   }
   editinfo(){
 // console.log(this.formatDateAndTime(this.bookingFormDetails.meeting_date));
-
+      this.heading = 'update meeting details';
       this.bookingForm.patchValue({
         meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
@@ -89,8 +90,12 @@ else{
      let newDate = new Date(date)
      let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
      let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
-     let Year = newDate.getFullYear()    
+     let Year = newDate.getFullYear()
+     let hours = newDate.getHours()
+     let minutes = newDate.getMinutes() 
+     let seconds = newDate.getSeconds()   
     return `${Year}-${Month}-${currentDate}`
+    // return `${hours}-${minutes}`
    }
 
   minDate:any = "";
