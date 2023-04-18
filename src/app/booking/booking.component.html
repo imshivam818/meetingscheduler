@@ -37,29 +37,6 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <span class="form-label">Start-time</span>
-                    <input class="form-control" type="time" formControlName="start_time"  >
-                    <span class="text-danger"
-                      *ngIf="(bookingFormcontrols['start_time'].touched||submitted)&& bookingFormcontrols['start_time'].invalid">
-                      <div *ngIf="bookingFormcontrols['start_time'].errors?.['required']">Start time is required.</div>
-
-                    </span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-label">End-time</label>
-                    <input class="form-control" type="time" formControlName="end_time"  >
-                    <span class="text-danger"
-                      *ngIf="(bookingFormcontrols['end_time'].touched||submitted)&& bookingFormcontrols['end_time'].invalid">
-                      <div *ngIf="bookingFormcontrols['end_time'].errors?.['required']">End time is required.</div>
-
-                    </span>
-                    
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
                     <span class="form-label">Meeting day</span>
                     <input class="form-control" type="date" formControlName="meeting_date" min="{{minDate}}">
                     <span class="text-danger"
@@ -70,7 +47,31 @@
                     </span>
                   </div>
                 </div>
+
+                 <div class="col-md-6">
+                  <div class="form-group">
+                    <span class="form-label">Start-Time</span>
+                    <input class="form-control" type="time" formControlName="start_time">
+                    <span class="text-danger"
+                      *ngIf="(bookingFormcontrols['start_time'].touched||submitted)&& bookingFormcontrols['start_time'].invalid">
+                      <div *ngIf="bookingFormcontrols['start_time'].errors?.['required']">Start time is required.</div>
+
+                    </span>
+                  </div>
+                </div>
                 <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">End-Time</label>
+                    <input class="form-control" type="time" formControlName="end_time"   >
+                    <span class="text-danger"
+                      *ngIf="(bookingFormcontrols['end_time'].touched||submitted)&& bookingFormcontrols['end_time'].invalid">
+                      <div *ngIf="bookingFormcontrols['end_time'].errors?.['required']">End time is required.</div>
+
+                    </span>
+
+                  </div>
+                </div>
+                 <div class="col-md-6">
                   <div class="form-group">
                     <span class="form-label">Meeting purpose</span>
                     <input class=" form-control" type="text" placeholder="Enter Your purpose"
@@ -89,10 +90,7 @@
                   {{buttonName}}</button>
                 <!-- <button class="submit-btn" type="reset">
                 Cancle</button> -->
-
-
-
-                <button type="button" class="btn btn-danger" (click)="oncancel()">Cancel</button>
+              <button type="button" class="btn btn-danger" (click)="oncancel()">Cancel</button>
               </div>
             </form>
           </div>

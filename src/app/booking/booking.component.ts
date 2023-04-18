@@ -25,6 +25,8 @@ export class BookingComponent implements OnInit {
   //varibles always in camel case;
 
   userId: any = localStorage.getItem('userId');
+
+
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
@@ -41,27 +43,40 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDate();
-
     this.room_id=this.route.snapshot.params['id'];
     this.bookingForm = this.fb.group({
       // meetingDetails: ['', [Validators.required]],
       meeting_id: ['',],
       room_id : [this.room_id],
-      name: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(10),Validators.pattern("^[A-Za-z][A-Za-z0-9_]{7,29}$")]],
+      name: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(25),Validators.pattern("^[A-Za-z][A-Za-z0-9_]{7,29}$")]],
       start_time: ['', [Validators.required]],
       end_time: ['', [Validators.required]],
       purpose: ['', [Validators.required]],
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
-    });
+     });
+
+    //  this.bookingForm.controls['star_time'].valueChanges.subscribe(
+    //   (value: number) => {
+    //     let changedValue = value;
+    //     if (value % 1 > 0.59) {
+    //       changedValue = Math.floor(value) + 1;
+    //       if (changedValue > 24) {
+    //         changedValue = 0.00;
+    //       }
+    //       this.formGroup?.controls['startTime'].setValue(changedValue.toFixed(2), {emitEvent: false});
+
+    //     }
+    //   }
+    // )
+
+
     console.log(this.room_id);
-
-
-
 
 console.log(this.bookingFormDetails);
 if(this.room_id == undefined){
   this.buttonName = 'Update'
+
 
   this.editinfo();
 }
@@ -81,20 +96,21 @@ else{
         purpose:this.bookingFormDetails.purpose
 
       });
-    //   this.bookingForm.patchValue({name:this.bookingFormDetails.name});
-    //   this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time});
-    //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
-    //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
-    //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
 
   }
   formatDateAndTime(date:any) {
-     let newDate = new Date(date)
+     let newDate = new Date(date);
      let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
      let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
-     let Year = newDate.getFullYear()
+     let Year = newDate.getFullYear();
+    //  let start_Time= (newDate.getTime());
+    //  let end_Time= newDate.getTime();
+
+
     return `${Year}-${Month}-${currentDate}`
    }
+
+
 
 
 
@@ -117,6 +133,13 @@ else{
     this.minDate = year + "-" + month + "-" + toDate;
     // console.log(year)
   }
+
+  // getTime(){
+  //   var date:any= date.getTime();
+
+
+
+  // }
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 
