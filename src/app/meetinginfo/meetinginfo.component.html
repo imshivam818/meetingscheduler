@@ -22,7 +22,7 @@
         <td>{{ meeting.end_time }}</td>
         <td>{{ meeting.meeting_date| date: 'YYYY-MM-dd' }}</td>
         <td formaction="app-booking">
-          <button class="btn btn-danger" (click)="deletedetails(meeting.meeting_id)">Delete</button>
+          <button class="btn btn-danger" (click)="deletedetails(meeting.meeting_id, meeting.name)">Delete</button>
 
           <button class="btn btn-primary" (click)="editMeeting(meeting)">Edit</button>
         </td>

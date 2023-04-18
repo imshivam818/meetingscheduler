@@ -144,6 +144,7 @@ app.put('/details/:room_id', function (request, response) {
   let end_time = request.body.end_time;
   let meeting_date = request.body.meeting_date;
   let purpose = request.body.purpose;
+  
 
   if (meeting_id == '') {
     connection.query(

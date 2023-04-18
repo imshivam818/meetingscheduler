@@ -55,16 +55,16 @@ export class BookingComponent implements OnInit {
       purpose: ['', [Validators.required]],
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
-<<<<<<< HEAD
-     });
-
-    //  this.bookingForm.controls['star_time'].valueChanges.subscribe(
-    //   (value: number) => {
->>>>>>> 843458455bf9671b3cc7f37d0577870e6af6de50
+    });
+    console.log(this.room_id);
+console.log(this.bookingFormDetails);
+if(this.room_id == undefined){
+  this.buttonName = 'Update'
   this.editinfo();
 }
 else{
   this.buttonName = 'Submit'
+}
   }
   editinfo(){
 // console.log(this.formatDateAndTime(this.bookingFormDetails.meeting_date));
@@ -133,17 +133,9 @@ else{
     this.router.navigate(['/','dashboard']);
 
   }
-<<<<<<< HEAD
-
   booking() {
     const data = this.bookingForm.value;
     console.log(data)
-
-=======
-  booking() {
-    const data = this.bookingForm.value;
-    console.log(data)
->>>>>>> 843458455bf9671b3cc7f37d0577870e6af6de50
     console.log('user data for meetingdetails', data);
     if(this.bookingForm.valid){
     // if(data.meeting_id){

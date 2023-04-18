@@ -140,7 +140,7 @@
 }
 
 .required::before {
-	content: "*";
+	content: "";
 	color: red;
 
 }
@@ -150,7 +150,7 @@ label.required {
 }
 
 
-/* 
+/*
 .booking-form .btn:hover {
 	background-color: green;
 	gap: 10px;
