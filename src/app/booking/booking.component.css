@@ -132,4 +132,26 @@
 	width: 100%;
 	display: block;
 	letter-spacing: 0.4px;
+	gap: 10px;
 }
+
+.booking-form .submit-btn:hover {
+	background-color: red;
+}
+
+.required::before {
+	content: "*";
+	color: red;
+
+}
+
+label.required {
+	color: whitesmoke;
+}
+
+
+/* 
+.booking-form .btn:hover {
+	background-color: green;
+	gap: 10px;
+} */

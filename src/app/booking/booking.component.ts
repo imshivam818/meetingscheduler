@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { response } from 'express';
 // import { DialogRef, DIALOG_DATA } from '@angular/core';
 @Component({
   selector: 'app-booking',
@@ -25,8 +26,8 @@ export class BookingComponent implements OnInit {
   //varibles always in camel case;
 
   userId: any = localStorage.getItem('userId');
-
-
+  public showListing : boolean = false
+  public heading = "Create your Meeting"
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
@@ -54,41 +55,22 @@ export class BookingComponent implements OnInit {
       purpose: ['', [Validators.required]],
       meeting_date: ['', [Validators.required]],
       userId:[this.userId],
+<<<<<<< HEAD
      });
 
     //  this.bookingForm.controls['star_time'].valueChanges.subscribe(
     //   (value: number) => {
-    //     let changedValue = value;
-    //     if (value % 1 > 0.59) {
-    //       changedValue = Math.floor(value) + 1;
-    //       if (changedValue > 24) {
-    //         changedValue = 0.00;
-    //       }
-    //       this.formGroup?.controls['startTime'].setValue(changedValue.toFixed(2), {emitEvent: false});
-
-    //     }
-    //   }
-    // )
-
-
-    console.log(this.room_id);
-
-console.log(this.bookingFormDetails);
-if(this.room_id == undefined){
-  this.buttonName = 'Update'
-
-
+>>>>>>> 843458455bf9671b3cc7f37d0577870e6af6de50
   this.editinfo();
 }
 else{
   this.buttonName = 'Submit'
-}
   }
-
   editinfo(){
 // console.log(this.formatDateAndTime(this.bookingFormDetails.meeting_date));
-
-      this.bookingForm.patchValue({meeting_id:this.bookingFormDetails.meeting_id,
+      this.heading = 'update meeting details';
+      this.bookingForm.patchValue({
+        meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
         end_time:this.bookingFormDetails.end_time,
@@ -102,12 +84,12 @@ else{
      let newDate = new Date(date);
      let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
      let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
-     let Year = newDate.getFullYear();
-    //  let start_Time= (newDate.getTime());
-    //  let end_Time= newDate.getTime();
-
-
+     let Year = newDate.getFullYear()
+     let hours = newDate.getHours()
+     let minutes = newDate.getMinutes()
+     let seconds = newDate.getSeconds()
     return `${Year}-${Month}-${currentDate}`
+    // return `${hours}-${minutes}`
    }
 
 
@@ -151,23 +133,52 @@ else{
     this.router.navigate(['/','dashboard']);
 
   }
+<<<<<<< HEAD
 
   booking() {
     const data = this.bookingForm.value;
     console.log(data)
 
+=======
+  booking() {
+    const data = this.bookingForm.value;
+    console.log(data)
+>>>>>>> 843458455bf9671b3cc7f37d0577870e6af6de50
     console.log('user data for meetingdetails', data);
-    this.apiService.meetingdetails(data).subscribe(
-      (response: any) => {
-        console.log(response, 'response');
-        this.router.navigate(['/', 'dashboard']);
-        Swal.fire('Meeting Booked  Successfully');
-      },
-      (error: any) => {
-        console.log(error);
-        Swal.fire('Error Occured');
-      }
-    );
+    if(this.bookingForm.valid){
+    // if(data.meeting_id){
+      this.apiService.meetingdetails(data).subscribe(
+        (response:any) => {
+          // console.log(response,'response');
+          console.log(response)
+          Swal.fire(response.result);
+          if(response.result == 'Meeting booked successfully'){
+            Swal.fire(response.result);
+            this.router.navigate(['/', 'dashboard']);
+          } else{
+            Swal.fire(response.result);
+            this.showListing = true;
+
+          }
+        }
+      )
+    // }
+    // else
+
+    // {
+    // this.apiService.meetingdetails(data).subscribe(
+    //   (response: any) => {
+    //     console.log(response, 'response');
+    //     this.router.navigate(['/', 'dashboard']);
+    //     Swal.fire('Meeting Booked  Successfully');
+    //   },
+    //   (error: any) => {
+    //     console.log(error);
+    //     Swal.fire('Error Occured');
+    //   }
+    // );
+    // }
+  }
   }
 
 

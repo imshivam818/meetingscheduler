@@ -4,8 +4,6 @@ const session = require("express-session");
 var cors = require("cors");
 const path = require("path");
 const { log } = require("console");
-
-
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -13,9 +11,6 @@ const connection = mysql.createConnection({
   database: "meetingapp",
   insecureAuth: true,
 });
-
-
-
 const app = express();
 app.use(
   session({
@@ -35,9 +30,6 @@ app.use(cors());
 app.get("/", function (request, response) {
   response.send("login page");
 });
-
-
-
 app.post("/login", function (request, response) {
   let email = request.body.email;
   let password = request.body.password;
@@ -65,9 +57,7 @@ app.post("/login", function (request, response) {
 app.post('/signup', function (request, response) {
   let email = request.body.email;
   let password = request.body.password;
-
-
-
+  let cpassword = request.body.cpassword;
   connection.query(
     "insert into user(email,password) values(?,?)", [email, password],
     function (error, result) {
@@ -115,7 +105,7 @@ app.post('/meetingdetails', function (request, response) {
         // console.log("result", result);
         // console.log("error", error);
         if (error) throw error;
-        response.send(result);
+        response.send(JSON.stringify({ "result": "Meeting booked successfully" }));
 
       }
     )
@@ -126,7 +116,7 @@ app.post('/meetingdetails', function (request, response) {
       //`UPDATE meeting_details SET name = '${name}', start_time = '${start_time}', end_time = '${end_time}', meeting_date = '${meeting_date}', purpose = '${purpose}' WHERE room_id = '${room_id}'`,
       function (error, result) {
         if (error) throw error;
-        response.send(result);
+        response.send(JSON.stringify({ "result": "Meeting updated successfully" }));
       }
     )
   }
