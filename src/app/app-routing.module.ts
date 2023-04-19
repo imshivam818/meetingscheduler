@@ -10,6 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SignupComponent } from './signup/signup.component';
 import { TeamsComponent } from './teams/teams.component';
 import { MeetinginfoComponent } from './meetinginfo/meetinginfo.component';
+
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
   {path:'login',component:LoginComponent},

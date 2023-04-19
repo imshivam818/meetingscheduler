@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-//const baseUrl = 'http://localhost:3000/login';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +39,6 @@ export class ApiServiceService {
   editMeetingDetails(room_id:string,meetingDetails:any){
     return this.http.put(`http://localhost:3000/details/${room_id}`,meetingDetails);
   } 
-  
+
 }
 

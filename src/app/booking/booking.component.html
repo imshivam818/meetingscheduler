@@ -10,9 +10,10 @@
             </div>
             <form [formGroup]="bookingForm" (ngSubmit)="booking()">
               <div class="form-group">
-                <span class="form-label">Name</span>
-                <input class="form-control" type="text" placeholder="Enter Your name" formControlName="name" required />
-                <span class="text-danger"
+                <label   class="form-label" class="required" >Name</label>
+                <input class="form-control" type="text" placeholder="Enter Your name" formControlName="name" />
+                <span>*</span>
+                <span class="text-danger" 
                   *ngIf="(bookingFormcontrols['name'].touched||submitted)&& bookingFormcontrols['name'].invalid">
                   <div *ngIf="bookingFormcontrols['name'].errors?.['required']">Name is required.</div>
                 </span>
@@ -21,18 +22,17 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <span class="form-label">Start-time</span>
+                    <label class="form-label" class="required">Start-time</label>
                     <input class="form-control" type="time" formControlName="start_time">
                     <span class="text-danger"
                       *ngIf="(bookingFormcontrols['start_time'].touched||submitted)&& bookingFormcontrols['start_time'].invalid">
                       <div *ngIf="bookingFormcontrols['start_time'].errors?.['required']">Start time is required.</div>
-
                     </span>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-label">End-time</label>
+                    <label class="form-label" class="required" >End-time</label>
                     <input class="form-control" type="time" formControlName="end_time">
                     <span class="text-danger"
                       *ngIf="(bookingFormcontrols['end_time'].touched||submitted)&& bookingFormcontrols['end_time'].invalid">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <span class="form-label">Meeting day</span>
+                    <label class="form-label" class="required">Meeting day</label>
                     <input class="form-control" type="date" formControlName="meeting_date" min="{{minDate}}">
                     <span class="text-danger"
                       *ngIf="(bookingFormcontrols['meeting_date'].touched||submitted)&& bookingFormcontrols['meeting_date'].invalid">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <span class="form-label">Meeting purpose</span>
+                    <label class="form-label" class="required">Meeting purpose</label>
                     <input class="form-control" type="text" placeholder="Enter Your purpose"
                       formControlName="purpose" />
                     <span class="text-danger"

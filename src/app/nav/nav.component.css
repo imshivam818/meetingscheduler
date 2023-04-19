@@ -2,12 +2,14 @@ body {
     margin: 0;
     box-sizing: border-box;
   }
+
+
   /* CSS for header */
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #302f49;
+    background-color: #302FD5;
   }
   
   .header .logo {
@@ -22,7 +24,6 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #302f49;
     margin-right: 20px;
   }
   

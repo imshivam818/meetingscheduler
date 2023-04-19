@@ -19,7 +19,7 @@ export class BookingComponent implements OnInit {
  
   @Input() bookingFormDetails: any;
   public datePipe = new DatePipe('en-Us');
-  public buttonName = ''
+  public buttonName = '';
   
 
 
@@ -31,7 +31,7 @@ export class BookingComponent implements OnInit {
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
- 
+
   constructor(
     private apiService: ApiServiceService,
     private router: Router,
@@ -61,17 +61,16 @@ export class BookingComponent implements OnInit {
 
   
   console.log(this.bookingFormDetails);
-if(this.room_id == undefined){
+  if(this.room_id == undefined){
   this.buttonName='Update'
   this.editinfo();
-}else{
+  }else{
   this.buttonName= 'submit'
-}
+  }
   }
  
 
   editinfo(){
-
       this.bookingForm.patchValue({meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
@@ -82,7 +81,7 @@ if(this.room_id == undefined){
     }
   
   formatDateAndTime(date:any) {
-     let newDate = new Date(date)
+     let newDate = new Date(date);
      let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
      let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
      let Year = newDate.getFullYear()    
@@ -106,7 +105,7 @@ if(this.room_id == undefined){
     // console.log(month);
     var year = date.getFullYear();
     this.minDate = year + "-" + month + "-" + toDate;
-    // console.log(year)
+    // console.log(year);
   }
   
   get bookingFormcontrols() {

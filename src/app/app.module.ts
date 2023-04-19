@@ -28,8 +28,6 @@ import { DatePipe } from '@angular/common';
     BookingComponent,
     CalendarComponent,
     MeetinginfoComponent,
-   
-    
   ],
   imports: [
     BrowserModule,

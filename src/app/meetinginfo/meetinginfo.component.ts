@@ -4,6 +4,7 @@ import { response } from 'express';
 import { Router } from '@angular/router';
 import { state } from '@angular/animations';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-meetinginfo',
   templateUrl: './meetinginfo.component.html',
@@ -76,6 +77,7 @@ export class MeetinginfoComponent implements OnInit {
     this.iseditmode=true;
     this.redirectBooking = true;
     this.bookingData = meeting;
+
     
 
     

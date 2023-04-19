@@ -12,22 +12,21 @@
             <hr>
           <form [formGroup]= "loginform" (ngSubmit)= "submitlogin()" >
             <div class="divider d-flex align-items-center my-4">
-              <p class="text-center fw-bold mx-0 mb-0">Please Fill Carefully</p>
+              <p class="text-center fw-bold mx-0 mb-0">Sign Up to Meeting Scheduler</p>
             </div>
             <!-- Email input -->
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example3">Email</label>
+            <div class="form-outline mb-2">
+                <label class="form-label" for="form3Example3" class="required">Email</label>
               <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your email"
               formControlName="email"/>
-            
             </div>
             <span class="text-danger" *ngIf="(loginformcontrols['email'].touched||submitted)&& loginformcontrols['email'].invalid">
               <div *ngIf="loginformcontrols['email'].errors?.['required']">Email is required.</div>
               <div *ngIf="loginformcontrols['email'].errors?.['email']">Email must be a valid email address.</div>
             </span>
             <!-- Password input -->
-            <div class="form-outline mb-3">
-                <label class="form-label" for="form3Example4">Password</label>
+            <div class="form-outline mb-2">
+                <label class="form-label" for="form3Example4" class="required">Password</label>
               <input type="password"  class="form-control form-control-lg"
               formControlName="password"
               id="password"
