@@ -7,8 +7,8 @@ const { log } = require("console");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Kum@r1999",
-  database: "bookingdetail",
+  password: "Gopi@2406",
+  database: "meetingapp",
   insecureAuth: true,
 });
 const app = express();
@@ -84,7 +84,7 @@ app.get('/details', function (request, response) {
     }
   )
 });
-// post api 
+// post api
 app.post('/meetingdetails', function (request, response) {
   // console.log(request.body);
   let meeting_id = request.body.meeting_id;
@@ -144,6 +144,7 @@ app.put('/details/:room_id', function (request, response) {
   let end_time = request.body.end_time;
   let meeting_date = request.body.meeting_date;
   let purpose = request.body.purpose;
+  
 
   if (meeting_id == '') {
     connection.query(
@@ -185,4 +186,4 @@ app.listen(3000, function () {
   console.log("myserver connect on 3000");
 });
 
-//i am changing this to check it 
+//i am changing this to check it

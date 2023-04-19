@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 import swal from 'sweetalert2';
-import { FormBuilder,FormGroup,Validators,PatternValidator} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +11,7 @@ import { FormBuilder,FormGroup,Validators,PatternValidator} from '@angular/forms
 })
 
 export class SignupComponent implements OnInit {
-  signupform!:FormGroup;
+  signupform!: FormGroup;
   submitted = false;
   constructor(private apiService: ApiServiceService,
             private router:Router,
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
 
     },
     {
-      //validators ka v small hona chaiye yha pe tbhi work krega  
+      //validators ka v small hona chaiye yha pe tbhi work krega
       validators: this.mustMatch('password','cpassword')
     });
   }
@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
   mustMatch(controlName:string, matchingControlName:string){
     console.log("controlName",controlName);
     console.log("matchingControlName", matchingControlName)
-    
+
     return(formGroup:FormGroup) =>{
       console.log(formGroup);
       const control = formGroup.controls[controlName];
@@ -59,17 +59,17 @@ export class SignupComponent implements OnInit {
 
   submitForm(){
     const data =
-     this.signupform.value;
+      this.signupform.value;
     console.log('user data for signin', data);
     this.apiService.signup(data).subscribe(
-      (response:any) => {
-        console.log(response,"response")
-          this.router.navigate(['/','login']);
-          this.submitted=true;
-          if(this.signupform.invalid){
-            swal.fire('Form is invalid');
-          }
-          swal.fire('Signup Successfully')
+      (response: any) => {
+        console.log(response, "response")
+        this.router.navigate(['/', 'login']);
+        this.submitted = true;
+        if (this.signupform.invalid) {
+          swal.fire('Form is invalid');
+        }
+        swal.fire('Signup Successfully')
       },
       // API error
       (error: any) => {

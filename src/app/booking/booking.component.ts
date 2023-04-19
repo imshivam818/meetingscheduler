@@ -18,7 +18,7 @@ export class BookingComponent implements OnInit {
   @Input() bookingFormDetails: any;
   public datePipe = new DatePipe('en-Us');
   public buttonName = ''
-  
+
 
 
   // room_id:any= this.route.snapshot.params['room_id'];
@@ -31,7 +31,7 @@ export class BookingComponent implements OnInit {
   //array banyaa
   // public bookingdetails:any=[];
   // meetingform=true;
- 
+
   constructor(
     private apiService: ApiServiceService,
     private router: Router,
@@ -44,15 +44,12 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDate();
-    // this.getTime();
-
-
     this.room_id=this.route.snapshot.params['id'];
     this.bookingForm = this.fb.group({
       // meetingDetails: ['', [Validators.required]],
       meeting_id: ['',],
       room_id : [this.room_id],
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(25),Validators.pattern("^[A-Za-z][A-Za-z0-9_]{7,29}$")]],
       start_time: ['', [Validators.required]],
       end_time: ['', [Validators.required]],
       purpose: ['', [Validators.required]],
@@ -81,28 +78,28 @@ else{
         purpose:this.bookingFormDetails.purpose
 
       });
-    //   this.bookingForm.patchValue({name:this.bookingFormDetails.name});
-    //   this.bookingForm.patchValue({start_time:this.bookingFormDetails.start_time});
-    //   this.bookingForm.patchValue({end_time:this.bookingFormDetails.end_time});
-    //   this.bookingForm.patchValue({meeting_date:this.bookingFormDetails.meeting_date});
-    //   this.bookingForm.patchValue({purpose:this.bookingFormDetails.purpose});
-    
+
   }
   formatDateAndTime(date:any) {
-     let newDate = new Date(date)
+     let newDate = new Date(date);
      let currentDate = (newDate.getDate() < 10) ? `0${newDate.getDate()}` : newDate.getDate();
      let Month = (newDate.getMonth() + 1 < 10) ? `0${newDate.getMonth() + 1}` : newDate.getMonth() + 1;
      let Year = newDate.getFullYear()
      let hours = newDate.getHours()
-     let minutes = newDate.getMinutes() 
-     let seconds = newDate.getSeconds()   
+     let minutes = newDate.getMinutes()
+     let seconds = newDate.getSeconds()
     return `${Year}-${Month}-${currentDate}`
     // return `${hours}-${minutes}`
    }
 
+
+
+
+
+
   minDate:any = "";
   getDate(){
-    var date:any = new Date(); 
+    var date:any = new Date();
     // console.log(date)
     var toDate:any = date.getDate();
     // console.log(toDate);
@@ -166,7 +163,7 @@ else{
     this.buttonName="submit";
     this.router.navigate(['/','dashboard']);
   }
-  booking() { 
+  booking() {
     const data = this.bookingForm.value;
     console.log(data)
     console.log('user data for meetingdetails', data);
@@ -189,13 +186,13 @@ else{
       )
     // }
     // else
-     
+
     // {
     // this.apiService.meetingdetails(data).subscribe(
     //   (response: any) => {
     //     console.log(response, 'response');
     //     this.router.navigate(['/', 'dashboard']);
-    //     Swal.fire('Meeting Booked  Successfully');        
+    //     Swal.fire('Meeting Booked  Successfully');
     //   },
     //   (error: any) => {
     //     console.log(error);
@@ -205,4 +202,6 @@ else{
     // }
   }
   }
+
+
 }

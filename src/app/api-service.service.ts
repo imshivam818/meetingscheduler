@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 //const baseUrl = 'http://localhost:3000/login';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 
 export class ApiServiceService {
   constructor(private http:HttpClient) {}
@@ -33,11 +33,10 @@ export class ApiServiceService {
     return this.http.get('http://localhost:3000/details');
   }
 
-
   deletemeeting(room_id:string){
     return this.http.delete(`http://localhost:3000/details/${room_id}`);
   }
-  
+
 
   // getMeetingDetailById(room_id:String){//   return this.http.get(`http://localhost:3000/details/${room_id}`);// }
   editMeetingDetails(room_id:string,meetingDetails:any){

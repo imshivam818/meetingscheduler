@@ -28,6 +28,7 @@
     "font-awesome": "^4.7.0",
     "fullcalendar": "^6.1.5",
     "mysql": "^2.18.1",
+    "ng-confirm-box": "0.0.6",
     "rxjs": "~7.5.0",
     "session": "^0.1.0",
     "sweetalert2": "^11.7.3",

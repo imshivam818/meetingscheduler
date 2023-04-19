@@ -7,7 +7,7 @@
    } */
    .main{
    
-    margin: 200%;
+    margin: 100%;
    }
    
    .card{
@@ -20,7 +20,7 @@
        }
    
    .image img{
-     width: 100%;
+     width: 200%;
      border-top-right-radius: 5px;
      border-top-left-radius: 5px;
      max-height: 150px;
