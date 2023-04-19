@@ -14,9 +14,8 @@ import { BookingComponent } from './booking/booking.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MeetinginfoComponent } from './meetinginfo/meetinginfo.component';
-import { EditBookingformComponent } from './edit-bookingform/edit-bookingform.component';
 import { DatePipe } from '@angular/common';
-// import {NgConfirmModule} from 'ng-confirm-box'; 
+import {NgConfirmModule} from 'ng-confirm-box'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +29,7 @@ import { DatePipe } from '@angular/common';
     BookingComponent,
     CalendarComponent,
     MeetinginfoComponent,
-    EditBookingformComponent,
+    
 
   ],
   imports: [
@@ -40,7 +39,7 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     FullCalendarModule,
-    // NgConfirmModule
+    NgConfirmModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

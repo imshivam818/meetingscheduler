@@ -94,9 +94,6 @@ else{
 
 
 
-
-
-
   minDate:any = "";
   getDate(){
     var date:any = new Date();
@@ -184,24 +181,7 @@ else{
           }
         }
       )
-    // }
-    // else
-
-    // {
-    // this.apiService.meetingdetails(data).subscribe(
-    //   (response: any) => {
-    //     console.log(response, 'response');
-    //     this.router.navigate(['/', 'dashboard']);
-    //     Swal.fire('Meeting Booked  Successfully');
-    //   },
-    //   (error: any) => {
-    //     console.log(error);
-    //     Swal.fire('Error Occured');
-    //   }
-    // );
-    // }
+  
   }
   }
-
-
 }
