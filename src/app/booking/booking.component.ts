@@ -44,6 +44,8 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDate();
+    // this.getTime();
+
 
     this.room_id=this.route.snapshot.params['id'];
     this.bookingForm = this.fb.group({
@@ -115,7 +117,45 @@ else{
     var year = date.getFullYear();
     this.minDate = year + "-" + month + "-" + toDate;
     // console.log(year)
+    // console.log(this.minDate);
   }
+
+
+
+
+ minTime:any;
+// getTime(){
+// const startTime = new Date("6/01/2022 12:14:05");
+// const endTime = new Date("6/01/2022 13:14:05");
+// console.log(startTime);
+// console.log(endTime);
+
+// const start = startTime.getTime();
+// console.log(start);
+
+// const end = endTime.getTime();
+// console.log(end);
+
+// if(start>end){
+// console.log("d1 is great d2")
+// }
+// else
+// if(start <= end){
+//   console.log("d1 is less d2") 
+// }
+// else{
+//   console.log("d1 = d2")
+// }
+
+    // console.log(date)
+    // const hours = date.getHours();
+    // const minutes = date.getMinutes();
+    // const seconds = date.getSeconds();
+
+    // this.minTime =  hours + ":" + minutes + ":" + seconds  ;
+    // console.log(this.minTime);
+
+// }
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 
@@ -125,7 +165,6 @@ else{
     this.bookingForm.reset;
     this.buttonName="submit";
     this.router.navigate(['/','dashboard']);
-  
   }
   booking() { 
     const data = this.bookingForm.value;
@@ -140,7 +179,7 @@ else{
           Swal.fire(response.result);
           if(response.result == 'Meeting booked successfully'){
             Swal.fire(response.result);
-            this.router.navigate(['/', 'dashboard']);        
+            this.router.navigate(['/', 'meetinginfo']);        
           } else{
             Swal.fire(response.result);
             this.showListing = true;

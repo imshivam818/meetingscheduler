@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const express = require("express");
 const session = require("express-session");
-var cors = require("cors");
+const cors = require("cors");
 const path = require("path");
 const { log } = require("console");
 const connection = mysql.createConnection({
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "static")));
 app.use(cors());
 
 
-app.get("/", function (request, response) {
+app.get("/", (request, response) => {
   response.send("login page");
 });
 app.post("/login", function (request, response) {

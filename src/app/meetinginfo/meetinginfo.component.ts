@@ -20,7 +20,7 @@ export class MeetinginfoComponent implements OnInit {
   public bookingData : any;
  
   
-  constructor(private apiservice: ApiServiceService, private router: Router) {}
+  constructor(private apiservice: ApiServiceService, private router: Router ) {}
   ngOnInit(): void {
     this.getalldetails();
     
@@ -46,34 +46,6 @@ export class MeetinginfoComponent implements OnInit {
     );
   }
 
-  
-  
-    // editMeeting(room_id:any){
-      // this.apiservice.editMeetingDetails.subscribe(
-      //   (response:any)=>{
-      //     console.log(response);
-      //   const editMeetingDetails={
-      //     name: 'New Meeting Name',
-      //     start_time: '12:00:00',
-      //     end_time: '13:00:00',
-      //     meeting_date: '2022-05-01',
-      //     purpose: 'New Meeting Purpose'
-      //   };
-        // this.apiservice.editMeetingDetails(room_id,editMeetingDetails).subscribe(
-        //   (response:any)=>{
-        //     this.getalldetails();
-        //     const updatedetials={...response,...editMeetingDetails};
-        //      this.router.navigate(['booking',room_id],{state:{data:updatedetials}});
-        //   },
-        // (error:any)=>{
-        //   console.log("error in updating",error);
-        //       }
-    //   );
-    // },
-    // (error:any)=>{
-    //   console.log(error);
-    // }
-    // );
 
   editMeeting(meeting: any) {
     this.redirectBooking = true;
