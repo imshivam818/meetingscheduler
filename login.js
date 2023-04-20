@@ -39,9 +39,10 @@ app.get("/", function (request, response) {
 
 
 app.post("/login", function (request, response) {
+  // let name= request.body.name;
   let email = request.body.email;
   let password = request.body.password;
-  if (email && password) {
+  if ( email && password) {
     connection.query(
       "SELECT id, email FROM user WHERE email = ? AND password = ?",
       [email, password],
@@ -49,6 +50,7 @@ app.post("/login", function (request, response) {
         if (error) throw error;
         if (results.length > 0) {
           request.session.loggedin = true;
+          // request.session.name=name;
           request.session.email = email;
           request.session.password = password;
           response.send(results);
@@ -63,13 +65,11 @@ app.post("/login", function (request, response) {
   }
 });
 app.post('/signup', function (request, response) {
+  let name= request.body.name;
   let email = request.body.email;
   let password = request.body.password;
-  // let cpassword = request.body.cpassword;
-
-
   connection.query(
-    "insert into user(email,password) values(?,?)", [email, password],
+    "insert into user(name,email,password) values(?,?,?)", [name,email, password],
     function (error, result) {
       if (error) throw error;
       response.send(result);

@@ -1,0 +1,9 @@
+.required::before{
+	content:"*";
+	color:red;
+  }
+  
+  label.required{
+	color: rgb(0, 0, 0);
+  }
+  

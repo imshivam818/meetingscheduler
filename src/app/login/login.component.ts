@@ -26,8 +26,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginform = this.fb.group({
+      // name:['',[Validators.required,Validators.minLength(2),Validators.maxLength(50), Validators.pattern(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/),
+      // pattern matching for name with no space or number in front
+      // Validators.pattern(/^(?![\d\s])[a-zA-Z\d\s]*$/),]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/)]],
     });
   }
 
@@ -47,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.submitted = true;
           // swal.fire('Logged in Sucessfully');
           //path to dashboard
-          this.router.navigate(['/', 'dashboard']);
+          this.router.navigate(['','meeting']);
           localStorage.setItem('userId', response[0].id);
           // alert(localStorage.getItem('userId'));
           // localStorage.removeItem('userId');

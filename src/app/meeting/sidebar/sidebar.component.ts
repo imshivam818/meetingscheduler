@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { response } from 'express';
-import { ApiServiceService } from '../api-service.service';
+import { ApiServiceService } from '../../api-service.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiServiceService } from '../api-service.service';
+import { ApiServiceService } from '../../api-service.service';
 import { response } from 'express';
 import { Router } from '@angular/router';
 import { state } from '@angular/animations';
@@ -44,42 +44,9 @@ export class MeetinginfoComponent implements OnInit {
       }
     );
   }
-  
-  
-    // editMeeting(room_id:any){
-      // this.apiservice.editMeetingDetails.subscribe(
-      //   (response:any)=>{
-      //     console.log(response);
-      //   const editMeetingDetails={
-      //     name: 'New Meeting Name',
-      //     start_time: '12:00:00',
-      //     end_time: '13:00:00',
-      //     meeting_date: '2022-05-01',
-      //     purpose: 'New Meeting Purpose'
-      //   };
-        // this.apiservice.editMeetingDetails(room_id,editMeetingDetails).subscribe(
-        //   (response:any)=>{
-        //     this.getalldetails();
-        //     const updatedetials={...response,...editMeetingDetails};
-        //      this.router.navigate(['booking',room_id],{state:{data:updatedetials}});
-        //   },
-        // (error:any)=>{
-        //   console.log("error in updating",error);
-        //       }
-    //   );
-    // },
-    // (error:any)=>{
-    //   console.log(error);
-    // }
-    // );
-
   editMeeting(meeting: any) {
     this.iseditmode=true;
     this.redirectBooking = true;
     this.bookingData = meeting;
-
-    
-
-    
   }
 }

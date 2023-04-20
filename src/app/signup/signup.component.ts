@@ -11,6 +11,7 @@ import { FormBuilder,FormGroup,Validators,PatternValidator} from '@angular/forms
 })
 
 export class SignupComponent implements OnInit {
+  
   signupform!:FormGroup;
   submitted = false;
   constructor(private apiService: ApiServiceService,
@@ -18,11 +19,11 @@ export class SignupComponent implements OnInit {
             private fb:FormBuilder) { }
   ngOnInit(){
     this.signupform=this.fb.group({
-      //now here we need to have two fields 
+      //now here we need to have two fields
+      name:['',[Validators.required,Validators.maxLength(20),Validators.minLength(2),Validators.pattern(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/)]],
       email:['',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      password:['',[Validators.required,Validators.minLength(8),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
+      password:['',[Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/)]],
       cpassword:['',[Validators.required,Validators.minLength(8)]]
-
     },
     {
       //validators ka v small hona chaiye yha pe tbhi work krega  
@@ -35,7 +36,7 @@ export class SignupComponent implements OnInit {
 
   mustMatch(controlName:string, matchingControlName:string){
     console.log("controlName",controlName);
-    console.log("matchingControlName", matchingControlName)
+    console.log("matchingControlName", matchingControlName);
     
     return(formGroup:FormGroup) =>{
       console.log(formGroup);
@@ -47,7 +48,6 @@ export class SignupComponent implements OnInit {
         return
       }
       if(control.value!== matchingControl.value){
-
         matchingControl.setErrors({mustMatch:true});
       }
       else
@@ -56,10 +56,8 @@ export class SignupComponent implements OnInit {
       }
     }
   }
-
   submitForm(){
-    const data =
-     this.signupform.value;
+    const data =this.signupform.value;
     console.log('user data for signin', data);
     this.apiService.signup(data).subscribe(
       (response:any) => {

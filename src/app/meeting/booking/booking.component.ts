@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit} from '@angular/core';
-import { ApiServiceService } from '../api-service.service';
+import { ApiServiceService } from '../../api-service.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -122,14 +122,11 @@ export class BookingComponent implements OnInit {
   booking() { 
     // alert("@#$%^");
     const data = this.bookingForm.value;
-    console.log(data)
-    
     console.log('user data for meetingdetails', data);
     this.apiService.meetingdetails(data).subscribe(
       (response: any) => {
         console.log(response, 'response');
-        this.router.navigate(['/', 'dashboard']);
-        
+        this.router.navigate(['/', 'meetinginfo']);
         Swal.fire('Meeting booked  SUCCESSFULLYYYYY');
       },
       (error: any) => {

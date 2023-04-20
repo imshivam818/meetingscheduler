@@ -1,29 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiServiceService } from '../api-service.service';
+import { ApiServiceService } from '../../api-service.service';
 import { response } from 'express';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-rooms',
+  templateUrl: './rooms.component.html',
+  styleUrls: ['./rooms.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class RoomsComponent implements OnInit {
   room_id:string="";
   room_name:string="";
   room_desc:string="";
   public roomDetails:any=[];
-  
-
   constructor(private apiservice:ApiServiceService,private router:Router) { }
+
   ngOnInit(): void {
     this.getroomid();
   }
   testfuntion(value:any){
     alert(value);
   }
-
-
-
 
   getroomid(){
     this.apiservice.roomid().subscribe(
@@ -35,8 +31,6 @@ export class DashboardComponent implements OnInit {
     );
       
   }
-
-
   bookmeeting(room_id:string){
     console.log('roomid()',room_id);
     this.router.navigate(['/booking',room_id]);
