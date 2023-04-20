@@ -7,8 +7,8 @@ const { log } = require("console");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Gopi@2406",
-  database: "meetingapp",
+  password: "Kum@r1999",
+  database: "bookingdetail",
   insecureAuth: true,
 });
 const app = express();
@@ -144,7 +144,7 @@ app.put('/details/:room_id', function (request, response) {
   let end_time = request.body.end_time;
   let meeting_date = request.body.meeting_date;
   let purpose = request.body.purpose;
-  
+
 
   if (meeting_id == '') {
     connection.query(

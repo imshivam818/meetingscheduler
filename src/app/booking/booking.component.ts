@@ -41,15 +41,17 @@ export class BookingComponent implements OnInit {
 
     // @Inject(DIALOG_DATA) public data: any
   ) {}
+  // public minTime: Date = new Date("6/01/2022 12:14:05")
 
   ngOnInit(): void {
+    // console.log(this.minTime);
+    // this.getTime1(null);
     this.getDate();
     this.room_id=this.route.snapshot.params['id'];
     this.bookingForm = this.fb.group({
-      // meetingDetails: ['', [Validators.required]],
       meeting_id: ['',],
       room_id : [this.room_id],
-      name: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(25),Validators.pattern("^[A-Za-z][A-Za-z0-9_]{7,29}$")]],
+      name: ['', [Validators.required,Validators.minLength(2),Validators.maxLength(25),Validators.pattern('[a-zA-Z ]*')]],
       start_time: ['', [Validators.required]],
       end_time: ['', [Validators.required]],
       purpose: ['', [Validators.required]],
@@ -66,6 +68,11 @@ else{
   this.buttonName = 'Submit'
 }
   }
+ 
+
+  
+    
+
   editinfo(){
 // console.log(this.formatDateAndTime(this.bookingFormDetails.meeting_date));
       this.heading = 'update meeting details';
@@ -73,8 +80,8 @@ else{
         meeting_id:this.bookingFormDetails.meeting_id,
         name:this.bookingFormDetails.name,
         start_time:this.bookingFormDetails.start_time,
-        end_time:this.bookingFormDetails.end_time,
-        meeting_date: this.formatDateAndTime(this.bookingFormDetails.meeting_date)  ,
+        end_time:this.startTimeFormat(this.bookingFormDetails.end_time),
+        meeting_date: this.formatDateAndTime(this.bookingFormDetails.meeting_date),
         purpose:this.bookingFormDetails.purpose
 
       });
@@ -91,6 +98,19 @@ else{
     return `${Year}-${Month}-${currentDate}`
     // return `${hours}-${minutes}`
    }
+   startTimeFormat(data:any){
+    let date = new Date();
+     console.log(date)
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    return `${hours}:${minutes}:${seconds}`
+
+
+    this.minDate =  hours + ":" + minutes + ":" + seconds  ;
+    // console.log(this.minTime);
+
+  }
 
 
 
@@ -110,36 +130,60 @@ else{
     // console.log(month);
     var year = date.getFullYear();
     this.minDate = year + "-" + month + "-" + toDate;
-    // console.log(year)
     // console.log(this.minDate);
   }
 
 
+  endTime(event:any){
+    console.log(event.target.value);
+    
+  }
 
 
- minTime:any;
-// getTime(){
-// const startTime = new Date("6/01/2022 12:14:05");
-// const endTime = new Date("6/01/2022 13:14:05");
-// console.log(startTime);
-// console.log(endTime);
 
-// const start = startTime.getTime();
-// console.log(start);
+minTime:any = "6/01/2022 09:00:00";
+changeStartTimeEvent(value:any){
+  // console.log(.target.value);
+  let todate:any = new Date().getTime();
+  let selectdate:any = new Date(value).getTime();
+  if(todate>selectdate){
+    alert("you can't choose previous date and time")
+  }
 
-// const end = endTime.getTime();
-// console.log(end);
+}
+end_Time:any = "6/01/2022 18:00:00";
+changeEndTimeEvent(value:any){
+  // console.log(.target.value);
+  let todate:any = new Date().getTime();
+  let selectdate:any = new Date(value).getTime();
+  if(todate<selectdate){
+    alert("you can't choose past date and time")
+  }
+}
 
-// if(start>end){
-// console.log("d1 is great d2")
-// }
+getTime(){ 
+const startTime = new Date("6/01/2022 12:14:05");
+const endTime = new Date("6/01/2022 13:14:05");
+console.log(startTime);
+console.log(endTime);
+
+const startT = startTime.getTime();
+// console.log(startT);
+const endT = endTime.getTime();
+// console.log(endT);
+if(startT<endT){
+console.log("d1 is great d2")
+this.bookingFormDetails.value("this is ")
+alert("you can't select previious date")
+}
 // else
-// if(start <= end){
+// if(startT >= endT){
 //   console.log("d1 is less d2") 
 // }
 // else{
 //   console.log("d1 = d2")
 // }
+
 
     // console.log(date)
     // const hours = date.getHours();
@@ -149,7 +193,24 @@ else{
     // this.minTime =  hours + ":" + minutes + ":" + seconds  ;
     // console.log(this.minTime);
 
-// }
+}
+
+maxTime:any = "09:00:00";
+getEndTime(tag:any = null){
+  // console.log(event.target.value);
+
+console.log(tag?.target.value)
+
+
+var hms =tag?.target.value;   // your input string
+var a = hms.split(':'); // split it at the colons
+
+// minutes are worth 60 seconds. Hours are worth 60 minutes.
+var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 ; 
+console.log(seconds);
+}
+
+
   get bookingFormcontrols() {
     return this.bookingForm.controls;
 

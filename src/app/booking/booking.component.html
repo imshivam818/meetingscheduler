@@ -39,7 +39,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="form-label" class="required">Start-time</label>
-                  <input class="form-control" type="time" formControlName="start_time" min="08:00" max="18:00">
+                  <input class="form-control" type="datetime-local" formControlName="start_time" #input
+                    (change)="changeStartTimeEvent(input.value)">
                   <span class="text-danger"
                     *ngIf="(bookingFormcontrols['start_time'].touched||submitted)&& bookingFormcontrols['start_time'].invalid">
                     <div *ngIf="bookingFormcontrols['start_time'].errors?.['required']">Start time is required.</div>
@@ -50,7 +51,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="form-label" class="required">End-time</label>
-                  <input class="form-control" type="time" formControlName="end_time" min="08:30" max="18:00">
+                  <input class="form-control" type="datetime-local" formControlName="end_time" #input
+                    (change)="changeEndTimeEvent(input.value)">
                   <span class="text-danger"
                     *ngIf="(bookingFormcontrols['end_time'].touched||submitted)&& bookingFormcontrols['end_time'].invalid">
                     <div *ngIf="bookingFormcontrols['end_time'].errors?.['required']">End time is required.</div>
